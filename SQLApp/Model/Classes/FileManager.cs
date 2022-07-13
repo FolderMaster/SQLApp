@@ -3,9 +3,9 @@ using Newtonsoft.Json;
 
 namespace SQLApp.Model.Classes
 {
-    public static class FileManager<T>
+    public static class FileManager
     {
-        public static T Load(string filePath)
+        public static T Load<T>(string filePath)
         {
             using (FileStream fileReader = File.Open(filePath, FileMode.OpenOrCreate))
             {
@@ -17,7 +17,7 @@ namespace SQLApp.Model.Classes
             }
         }
 
-        public static void Save(T item, string filePath)
+        public static void Save<T>(T item, string filePath)
         {
             using (FileStream fileWriter = new FileStream(filePath, FileMode.Create))
             {

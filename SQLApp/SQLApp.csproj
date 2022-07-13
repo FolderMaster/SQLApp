@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Classes\FileManager.cs" />
+    <Compile Include="Model\Classes\SqlManager.cs" />
     <Compile Include="View\Controls\CommandControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -89,6 +90,18 @@
     <Compile Include="View\Controls\EditorConnectionControl.Designer.cs">
       <DependentUpon>EditorConnectionControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Controls\EditTableControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\EditTableControl.Designer.cs">
+      <DependentUpon>EditTableControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\SelectTableContol.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\SelectTableContol.Designer.cs">
+      <DependentUpon>SelectTableContol.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Forms\ConnectionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,7 +117,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\MessageBoxManager.cs" />
-    <Compile Include="View\SqlType.cs" />
     <EmbeddedResource Include="View\Controls\CommandControl.resx">
       <DependentUpon>CommandControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -116,6 +128,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\EditorConnectionControl.resx">
       <DependentUpon>EditorConnectionControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\EditTableControl.resx">
+      <DependentUpon>EditTableControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\SelectTableContol.resx">
+      <DependentUpon>SelectTableContol.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Forms\ConnectionForm.resx">
       <DependentUpon>ConnectionForm.cs</DependentUpon>

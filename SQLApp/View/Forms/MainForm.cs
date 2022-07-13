@@ -18,6 +18,7 @@ namespace SQLApp.View.Forms
     public partial class MainForm : Form
     {
         private string _filePath = "Settings.txt";
+
         public MainForm()
         {
             InitializeComponent();
@@ -25,14 +26,14 @@ namespace SQLApp.View.Forms
 
         private void ConnectionListControl_ConnectionBuilderChanged(object sender, EventArgs e)
         {
-            CommandControl.ConnectionBuilder = CreateTableControl.ConnectionBuilder = ConnectionListControl.CurrentConnectionBuilder;
+            CommandControl.ConnectionBuilder = CreateTableControl.ConnectionBuilder = EditTableControl.ConnectionBuilder = ConnectionListControl.CurrentConnectionBuilder;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
             try
             {
-                List<SqlConnectionStringBuilder> connectionBuilderList = FileManager<List<SqlConnectionStringBuilder>>.Load(_filePath);
+                List<SqlConnectionStringBuilder> connectionBuilderList = FileManager.Load<List<SqlConnectionStringBuilder>>(_filePath);
                 if (connectionBuilderList != null)
                 {
                     ConnectionListControl.ConnectionBuilderList = connectionBuilderList;
@@ -48,7 +49,7 @@ namespace SQLApp.View.Forms
         {
             try
             {
-                FileManager<List<SqlConnectionStringBuilder>>.Save(ConnectionListControl.ConnectionBuilderList, _filePath);
+                FileManager.Save(ConnectionListControl.ConnectionBuilderList, _filePath);
             }
             catch (Exception ex)
             {

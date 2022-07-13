@@ -22,6 +22,8 @@ namespace SQLApp.View.Controls
                 for (int n = 0; n < value.Tables.Count; ++n)
                 {
                     DataGridView dataGridView = new DataGridView();
+                    dataGridView.ReadOnly = true;
+                    dataGridView.AllowUserToAddRows = false;
                     dataGridView.DataSource = value.Tables[n];
                     dataGridView.Dock = DockStyle.Fill;
 

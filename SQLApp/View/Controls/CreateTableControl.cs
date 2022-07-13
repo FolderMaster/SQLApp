@@ -20,7 +20,7 @@ namespace SQLApp.View.Controls
         {
             InitializeComponent();
 
-            ((DataGridViewComboBoxColumn)DataGridView.Columns["TypeColumn"]).DataSource = Enum.GetNames(typeof(SqlType));
+            ((DataGridViewComboBoxColumn)DataGridView.Columns["TypeColumn"]).DataSource = Enum.GetNames(typeof(SqlDbType));
         }
 
         private void Button_Click(object sender, EventArgs e)
@@ -32,7 +32,6 @@ namespace SQLApp.View.Controls
                     connection.Open();
 
                     SqlCommand sqlCommand = new SqlCommand(CreateCommand(), connection);
-                    MessageBoxManager.ShowInformation(sqlCommand.ExecuteNonQuery().ToString());
                 }
             }
             catch (Exception ex)
@@ -44,18 +43,21 @@ namespace SQLApp.View.Controls
         private string CreateCommand()
         {
             string result = "CREATE TABLE " + TextBox.Text + "(";
-            foreach (DataGridViewRow row in DataGridView.Rows)
+            for(int n = 0; n < DataGridView.Rows.Count - 1; ++n)
             {
-                result += (string)row.Cells["NameColumn"].Value + " " + (string)row.Cells["TypeColumn"].Value;
-                if(row.Cells["NullColumn"].Value == null)
+                result += (string)DataGridView.Rows[n].Cells["NameColumn"].Value + " " + (string)DataGridView.Rows[n].Cells["TypeColumn"].Value;
+                if (DataGridView.Rows[n].Cells["NullColumn"].Value == null)
                 {
                     result += " NOT NULL";
                 }
-                if ((string)row.Cells["DefaultColumn"].Value != null)
+                if ((string)DataGridView.Rows[n].Cells["DefaultColumn"].Value != null)
                 {
-                    result += " DEFAULT " + (string)row.Cells["DefaultColumn"].Value;
+                    result += " DEFAULT " + (string)DataGridView.Rows[n].Cells["DefaultColumn"].Value;
                 }
-                result += ",";
+                if (n < DataGridView.Rows.Count - 2)
+                {
+                    result += ",";
+                }
             }
             result += ");";
             return result;
