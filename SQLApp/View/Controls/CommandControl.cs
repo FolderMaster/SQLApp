@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 using System.Data.SqlClient;
 
+using SQLApp.Model.Classes;
+
 namespace SQLApp.View.Controls
 {
     public partial class CommandControl : UserControl
@@ -46,15 +48,7 @@ namespace SQLApp.View.Controls
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(ConnectionBuilder.ConnectionString))
-                {
-                    connection.Open();
-
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter(TextBox.Text, connection);
-                    DataSet dataSet = new DataSet();
-                    dataAdapter.Fill(dataSet);
-                    DataSet = dataSet;
-                }
+                DataSet = SqlManager.ExecuteDataAdapter(ConnectionBuilder, TextBox.Text);
             }
             catch(Exception ex)
             {

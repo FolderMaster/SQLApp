@@ -44,6 +44,8 @@
             // 
             // ComboBox
             // 
+            this.ComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ComboBox.FormattingEnabled = true;
             this.ComboBox.Location = new System.Drawing.Point(41, 0);
             this.ComboBox.Name = "ComboBox";
@@ -53,11 +55,12 @@
             // 
             // Button
             // 
-            this.Button.Location = new System.Drawing.Point(168, -2);
+            this.Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Button.Location = new System.Drawing.Point(168, 0);
             this.Button.Name = "Button";
             this.Button.Size = new System.Drawing.Size(75, 23);
             this.Button.TabIndex = 5;
-            this.Button.Text = "Update:";
+            this.Button.Text = "Update";
             this.Button.UseVisualStyleBackColor = true;
             this.Button.Click += new System.EventHandler(this.Button_Click);
             // 

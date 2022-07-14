@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 
 using SQLApp.View.Controls;
+using SQLApp.Model.Classes;
 
 namespace SQLApp.View.Forms
 {
@@ -32,13 +33,11 @@ namespace SQLApp.View.Forms
 
         private void CheckButton_Click(object sender, EventArgs e)
         {
+            
             try
             {
-                using (SqlConnection connection = new SqlConnection(EditorConnectionControl.ConnectionBuilder.ConnectionString))
-                {
-                    connection.Open();
-                    MessageBoxManager.ShowInformation(connection.State.ToString());
-                }
+                ConnectionBuilder = EditorConnectionControl.ConnectionBuilder;
+                MessageBoxManager.ShowInformation(SqlManager.ConnectionState(ConnectionBuilder).ToString());
             }
             catch(Exception ex)
             {

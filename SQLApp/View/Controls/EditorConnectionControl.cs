@@ -30,6 +30,8 @@ namespace SQLApp.View.Controls
             }
         }
 
+        public event EventHandler ConnectionBuilderChanged;
+
         public EditorConnectionControl()
         {
             InitializeComponent();
@@ -38,16 +40,22 @@ namespace SQLApp.View.Controls
         private void DataSourceTextBox_TextChanged(object sender, EventArgs e)
         {
             ConnectionBuilder.DataSource = DataSourceTextBox.Text;
+
+            ConnectionBuilderChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void UserTextBox_TextChanged(object sender, EventArgs e)
         {
             ConnectionBuilder.UserID = UserTextBox.Text;
+
+            ConnectionBuilderChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void PasswordTextBox_TextChanged(object sender, EventArgs e)
         {
             ConnectionBuilder.Password = PasswordTextBox.Text;
+
+            ConnectionBuilderChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }

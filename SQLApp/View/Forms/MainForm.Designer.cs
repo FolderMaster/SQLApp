@@ -30,16 +30,13 @@
         {
             this.TabControl = new System.Windows.Forms.TabControl();
             this.CommandTabPage = new System.Windows.Forms.TabPage();
-            this.CommandControl = new SQLApp.View.Controls.CommandControl();
-            this.CreateTableTabPage = new System.Windows.Forms.TabPage();
-            this.CreateTableControl = new SQLApp.View.Controls.CreateTableControl();
-            this.EditTableTabPage = new System.Windows.Forms.TabPage();
-            this.EditTableControl = new SQLApp.View.Controls.EditTableControl();
+            this.TableTabPage = new System.Windows.Forms.TabPage();
             this.ConnectionListControl = new SQLApp.View.Controls.ConnectionListControl();
+            this.CommandControl = new SQLApp.View.Controls.CommandControl();
+            this.TableListControl = new SQLApp.View.Controls.TableListControl();
             this.TabControl.SuspendLayout();
             this.CommandTabPage.SuspendLayout();
-            this.CreateTableTabPage.SuspendLayout();
-            this.EditTableTabPage.SuspendLayout();
+            this.TableTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // TabControl
@@ -48,12 +45,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TabControl.Controls.Add(this.CommandTabPage);
-            this.TabControl.Controls.Add(this.CreateTableTabPage);
-            this.TabControl.Controls.Add(this.EditTableTabPage);
-            this.TabControl.Location = new System.Drawing.Point(3, 50);
+            this.TabControl.Controls.Add(this.TableTabPage);
+            this.TabControl.Location = new System.Drawing.Point(12, 42);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(439, 388);
+            this.TabControl.Size = new System.Drawing.Size(427, 396);
             this.TabControl.TabIndex = 1;
             // 
             // CommandTabPage
@@ -62,57 +58,21 @@
             this.CommandTabPage.Location = new System.Drawing.Point(4, 22);
             this.CommandTabPage.Name = "CommandTabPage";
             this.CommandTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.CommandTabPage.Size = new System.Drawing.Size(431, 362);
+            this.CommandTabPage.Size = new System.Drawing.Size(419, 370);
             this.CommandTabPage.TabIndex = 0;
             this.CommandTabPage.Text = "Command";
             this.CommandTabPage.UseVisualStyleBackColor = true;
             // 
-            // CommandControl
+            // TableTabPage
             // 
-            this.CommandControl.ConnectionBuilder = null;
-            this.CommandControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CommandControl.Location = new System.Drawing.Point(3, 3);
-            this.CommandControl.Name = "CommandControl";
-            this.CommandControl.Size = new System.Drawing.Size(425, 356);
-            this.CommandControl.TabIndex = 0;
-            // 
-            // CreateTableTabPage
-            // 
-            this.CreateTableTabPage.Controls.Add(this.CreateTableControl);
-            this.CreateTableTabPage.Location = new System.Drawing.Point(4, 22);
-            this.CreateTableTabPage.Name = "CreateTableTabPage";
-            this.CreateTableTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.CreateTableTabPage.Size = new System.Drawing.Size(431, 362);
-            this.CreateTableTabPage.TabIndex = 1;
-            this.CreateTableTabPage.Text = "Create Table";
-            this.CreateTableTabPage.UseVisualStyleBackColor = true;
-            // 
-            // CreateTableControl
-            // 
-            this.CreateTableControl.ConnectionBuilder = null;
-            this.CreateTableControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CreateTableControl.Location = new System.Drawing.Point(3, 3);
-            this.CreateTableControl.Name = "CreateTableControl";
-            this.CreateTableControl.Size = new System.Drawing.Size(425, 356);
-            this.CreateTableControl.TabIndex = 0;
-            // 
-            // EditTableTabPage
-            // 
-            this.EditTableTabPage.Controls.Add(this.EditTableControl);
-            this.EditTableTabPage.Location = new System.Drawing.Point(4, 22);
-            this.EditTableTabPage.Name = "EditTableTabPage";
-            this.EditTableTabPage.Size = new System.Drawing.Size(431, 362);
-            this.EditTableTabPage.TabIndex = 2;
-            this.EditTableTabPage.Text = "Edit Table";
-            this.EditTableTabPage.UseVisualStyleBackColor = true;
-            // 
-            // EditTableControl
-            // 
-            this.EditTableControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.EditTableControl.Location = new System.Drawing.Point(0, 0);
-            this.EditTableControl.Name = "EditTableControl";
-            this.EditTableControl.Size = new System.Drawing.Size(431, 362);
-            this.EditTableControl.TabIndex = 0;
+            this.TableTabPage.Controls.Add(this.TableListControl);
+            this.TableTabPage.Location = new System.Drawing.Point(4, 22);
+            this.TableTabPage.Name = "TableTabPage";
+            this.TableTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.TableTabPage.Size = new System.Drawing.Size(419, 370);
+            this.TableTabPage.TabIndex = 1;
+            this.TableTabPage.Text = "Table";
+            this.TableTabPage.UseVisualStyleBackColor = true;
             // 
             // ConnectionListControl
             // 
@@ -121,9 +81,27 @@
             this.ConnectionListControl.Location = new System.Drawing.Point(12, 12);
             this.ConnectionListControl.Name = "ConnectionListControl";
             this.ConnectionListControl.SelectedIndex = -1;
-            this.ConnectionListControl.Size = new System.Drawing.Size(430, 24);
-            this.ConnectionListControl.TabIndex = 2;
+            this.ConnectionListControl.Size = new System.Drawing.Size(427, 24);
+            this.ConnectionListControl.TabIndex = 0;
             this.ConnectionListControl.ConnectionBuilderChanged += new System.EventHandler(this.ConnectionListControl_ConnectionBuilderChanged);
+            // 
+            // CommandControl
+            // 
+            this.CommandControl.ConnectionBuilder = null;
+            this.CommandControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CommandControl.Location = new System.Drawing.Point(3, 3);
+            this.CommandControl.Name = "CommandControl";
+            this.CommandControl.Size = new System.Drawing.Size(413, 364);
+            this.CommandControl.TabIndex = 0;
+            // 
+            // TableListControl
+            // 
+            this.TableListControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TableListControl.Location = new System.Drawing.Point(6, 6);
+            this.TableListControl.Name = "TableListControl";
+            this.TableListControl.Size = new System.Drawing.Size(407, 23);
+            this.TableListControl.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -138,8 +116,7 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.TabControl.ResumeLayout(false);
             this.CommandTabPage.ResumeLayout(false);
-            this.CreateTableTabPage.ResumeLayout(false);
-            this.EditTableTabPage.ResumeLayout(false);
+            this.TableTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -147,11 +124,9 @@
         #endregion
         private System.Windows.Forms.TabControl TabControl;
         private System.Windows.Forms.TabPage CommandTabPage;
-        private System.Windows.Forms.TabPage CreateTableTabPage;
+        private System.Windows.Forms.TabPage TableTabPage;
         private SQLApp.View.Controls.CommandControl CommandControl;
         private SQLApp.View.Controls.ConnectionListControl ConnectionListControl;
-        private Controls.CreateTableControl CreateTableControl;
-        private System.Windows.Forms.TabPage EditTableTabPage;
-        private Controls.EditTableControl EditTableControl;
+        private Controls.TableListControl TableListControl;
     }
 }

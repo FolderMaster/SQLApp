@@ -26,7 +26,7 @@ namespace SQLApp.View.Forms
 
         private void ConnectionListControl_ConnectionBuilderChanged(object sender, EventArgs e)
         {
-            CommandControl.ConnectionBuilder = CreateTableControl.ConnectionBuilder = EditTableControl.ConnectionBuilder = ConnectionListControl.CurrentConnectionBuilder;
+            CommandControl.ConnectionBuilder = ConnectionListControl.CurrentConnectionBuilder;
         }
 
         private void MainForm_Load(object sender, EventArgs e)

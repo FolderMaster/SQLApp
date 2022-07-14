@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 using System.Data.SqlClient;
 
+using SQLApp.Model.Classes;
+
 namespace SQLApp.View.Controls
 {
     public partial class CreateTableControl : UserControl
@@ -27,12 +29,7 @@ namespace SQLApp.View.Controls
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(ConnectionBuilder.ConnectionString))
-                {
-                    connection.Open();
-
-                    SqlCommand sqlCommand = new SqlCommand(CreateCommand(), connection);
-                }
+                SqlManager.ExecuteDataAdapter(ConnectionBuilder, CreateCommand());
             }
             catch (Exception ex)
             {

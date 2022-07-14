@@ -98,7 +98,7 @@
             this.Controls.Add(this.CreateButton);
             this.Controls.Add(this.ComboBox);
             this.Name = "ConnectionListControl";
-            this.Size = new System.Drawing.Size(430, 24);
+            this.Size = new System.Drawing.Size(430, 23);
             this.ResumeLayout(false);
             this.PerformLayout();
 

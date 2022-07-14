@@ -14,7 +14,7 @@ using SQLApp.Model.Classes;
 
 namespace SQLApp.View.Controls
 {
-    public partial class EditTableControl : UserControl
+    public partial class DropTableControl : UserControl
     {
         private SqlConnectionStringBuilder _connectionBuilder = null;
 
@@ -27,33 +27,23 @@ namespace SQLApp.View.Controls
             set
             {
                 _connectionBuilder = value;
+
+                SelectTableContol.ConnectionBuilder = _connectionBuilder;
             }
         }
 
-        public EditTableControl()
+        public DropTableControl()
         {
             InitializeComponent();
-        }
-
-        private void SelectTableContol_NameCurrentTableChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                DataGridView.DataSource = SqlManager.ExecuteDataAdapter(ConnectionBuilder, "SELECT * FROM " + ";").Tables[0];
-            }
-            catch (Exception ex)
-            {
-                MessageBoxManager.ShowError(ex.Message);
-            }
         }
 
         private void Button_Click(object sender, EventArgs e)
         {
             try
             {
-                SqlManager.ExecuteDataAdapter(ConnectionBuilder, "");
+                SqlManager.ExecuteDataAdapter(ConnectionBuilder, "DROP TABLE " + SelectTableContol.NameCurrentTable + ";");
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 MessageBoxManager.ShowError(ex.Message);
             }

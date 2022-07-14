@@ -8,14 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using System.Data.SqlClient;
-
-using SQLApp.View.Forms;
-
 namespace SQLApp.View.Controls
 {
-    [Serializable]
-    public partial class ConnectionListControl : UserControl
+    public partial class TableListControl : UserControl
     {
         private BindingSource _bindingSource = new BindingSource();
 
@@ -33,18 +28,18 @@ namespace SQLApp.View.Controls
                 _connectionBuilderList = value;
                 _bindingSource.DataSource = _connectionBuilderList;
 
-                if(_connectionBuilderList.Count > 0)
+                if (_connectionBuilderList.Count > 0)
                 {
                     SelectedIndex = 0;
                 }
             }
         }
 
-        public SqlConnectionStringBuilder CurrentConnectionBuilder
+        public SqlConnectionStringBuilder SelectedTable
         {
             get
             {
-                if(ComboBox.SelectedIndex == -1)
+                if (ComboBox.SelectedIndex == -1)
                 {
                     return null;
                 }
@@ -65,59 +60,35 @@ namespace SQLApp.View.Controls
             {
                 ComboBox.SelectedIndex = value;
 
-                ConnectionBuilderChanged?.Invoke(this, EventArgs.Empty);
+                SelectedTableChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 
-        public event EventHandler ConnectionBuilderChanged;
+        public event EventHandler SelectedTableChanged;
 
-        public ConnectionListControl()
+        public TableListControl()
         {
             InitializeComponent();
-
-            _bindingSource.DataSource = ConnectionBuilderList;
-            ComboBox.DataSource = _bindingSource;
-        }
-
-        private void CreateButton_Click(object sender, EventArgs e)
-        {
-            ConnectionForm form = new ConnectionForm();
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                ConnectionBuilderList.Add(form.ConnectionBuilder);
-                _bindingSource.ResetBindings(false);
-            }
-        }
-
-        private void EditButton_Click(object sender, EventArgs e)
-        {
-            if (ComboBox.SelectedIndex != -1)
-            {
-                ConnectionForm form = new ConnectionForm(CurrentConnectionBuilder);
-                if (form.ShowDialog() == DialogResult.OK)
-                {
-                    ConnectionBuilderList[ComboBox.SelectedIndex] = form.ConnectionBuilder;
-                    _bindingSource.ResetBindings(false);
-
-                    ConnectionBuilderChanged?.Invoke(this, EventArgs.Empty);
-                }
-            }
-        }
-
-        private void DeleteButton_Click(object sender, EventArgs e)
-        {
-            if(ComboBox.SelectedIndex != -1)
-            {
-                ConnectionBuilderList.RemoveAt(ComboBox.SelectedIndex);
-                _bindingSource.ResetBindings(false);
-
-                ConnectionBuilderChanged?.Invoke(this, EventArgs.Empty);
-            }
         }
 
         private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ConnectionBuilderChanged?.Invoke(this, EventArgs.Empty);
+
+        }
+
+        private void CreateButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EditButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

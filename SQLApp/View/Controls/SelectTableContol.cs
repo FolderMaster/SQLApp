@@ -10,11 +10,14 @@ using System.Windows.Forms;
 
 using System.Data.SqlClient;
 
+using SQLApp.Model.Classes;
+
 namespace SQLApp.View.Controls
 {
     public partial class SelectTableContol : UserControl
     {
         private SqlConnectionStringBuilder _connectionBuilder = null;
+
         public SqlConnectionStringBuilder ConnectionBuilder
         {
             get
@@ -25,21 +28,23 @@ namespace SQLApp.View.Controls
             {
                 _connectionBuilder = value;
 
-                try
+                if(_connectionBuilder != null)
                 {
-                    using (SqlConnection connection = new SqlConnection(_connectionBuilder.ConnectionString))
+                    try
                     {
-                        connection.Open();
-
-                        ComboBox.DataSource = connection.GetSchema("Tables").AsEnumerable().Select(s => s["TABLE_NAME"].ToString()).ToList();
+                        ComboBox.DataSource = SqlManager.GetSchema(ConnectionBuilder).AsEnumerable().Select(s => s["TABLE_NAME"].ToString()).ToList();
                     }
-                }
-                catch (Exception ex)
-                {
-                    MessageBoxManager.ShowError(ex.Message);
+                    catch (Exception ex)
+                    {
+                        MessageBoxManager.ShowError(ex.Message);
+                    }
                 }
             }
         }
+
+        public string NameCurrentTable { get; private set; }
+
+        public event EventHandler NameCurrentTableChanged;
 
         public SelectTableContol()
         {
@@ -48,12 +53,21 @@ namespace SQLApp.View.Controls
 
         private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            NameCurrentTable = ComboBox.SelectedItem.ToString();
 
+            NameCurrentTableChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void Button_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                ComboBox.DataSource = SqlManager.GetSchema(ConnectionBuilder).AsEnumerable().Select(s => s["TABLE_NAME"].ToString()).ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBoxManager.ShowError(ex.Message);
+            }
         }
     }
 }
