@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 using System.Data.SqlClient;
 
+using SQLApp.Model.Classes;
 using SQLApp.View.Forms;
 
 namespace SQLApp.View.Controls
@@ -40,7 +41,7 @@ namespace SQLApp.View.Controls
             }
         }
 
-        public SqlConnectionStringBuilder CurrentConnectionBuilder
+        public SqlConnectionStringBuilder SelectedConnectionBuilder
         {
             get
             {
@@ -50,7 +51,7 @@ namespace SQLApp.View.Controls
                 }
                 else
                 {
-                    return ConnectionBuilderList[ComboBox.SelectedIndex];
+                    return ConnectionBuilderList[SelectedIndex];
                 }
             }
         }
@@ -93,10 +94,10 @@ namespace SQLApp.View.Controls
         {
             if (ComboBox.SelectedIndex != -1)
             {
-                ConnectionForm form = new ConnectionForm(CurrentConnectionBuilder);
+                ConnectionForm form = new ConnectionForm(SelectedConnectionBuilder);
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    ConnectionBuilderList[ComboBox.SelectedIndex] = form.ConnectionBuilder;
+                    ConnectionBuilderList[SelectedIndex] = form.ConnectionBuilder;
                     _bindingSource.ResetBindings(false);
 
                     ConnectionBuilderChanged?.Invoke(this, EventArgs.Empty);
@@ -108,7 +109,7 @@ namespace SQLApp.View.Controls
         {
             if(ComboBox.SelectedIndex != -1)
             {
-                ConnectionBuilderList.RemoveAt(ComboBox.SelectedIndex);
+                ConnectionBuilderList.RemoveAt(SelectedIndex);
                 _bindingSource.ResetBindings(false);
 
                 ConnectionBuilderChanged?.Invoke(this, EventArgs.Empty);
@@ -118,6 +119,18 @@ namespace SQLApp.View.Controls
         private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ConnectionBuilderChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void CheckButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MessageBoxManager.ShowInformation(SqlManager.ConnectionState(SelectedConnectionBuilder).ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBoxManager.ShowError(ex.Message);
+            }
         }
     }
 }

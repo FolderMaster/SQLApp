@@ -14,33 +14,21 @@ using SQLApp.Model.Classes;
 
 namespace SQLApp.View.Controls
 {
-    public partial class CreateTableControl : UserControl
+    public partial class EditorTableControl : UserControl
     {
         public SqlConnectionStringBuilder ConnectionBuilder { get; set; } = null;
 
-        public CreateTableControl()
+        public EditorTableControl()
         {
             InitializeComponent();
 
             ((DataGridViewComboBoxColumn)DataGridView.Columns["TypeColumn"]).DataSource = Enum.GetNames(typeof(SqlDbType));
         }
 
-        private void Button_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                SqlManager.ExecuteDataAdapter(ConnectionBuilder, CreateCommand());
-            }
-            catch (Exception ex)
-            {
-                MessageBoxManager.ShowError(ex.Message);
-            }
-        }
-
-        private string CreateCommand()
+        public string CreateCommand()
         {
             string result = "CREATE TABLE " + TextBox.Text + "(";
-            for(int n = 0; n < DataGridView.Rows.Count - 1; ++n)
+            for (int n = 0; n < DataGridView.Rows.Count - 1; ++n)
             {
                 result += (string)DataGridView.Rows[n].Cells["NameColumn"].Value + " " + (string)DataGridView.Rows[n].Cells["TypeColumn"].Value;
                 if (DataGridView.Rows[n].Cells["NullColumn"].Value == null)

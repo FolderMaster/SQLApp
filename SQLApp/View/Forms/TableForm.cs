@@ -12,9 +12,26 @@ namespace SQLApp.View.Forms
 {
     public partial class TableForm : Form
     {
+        public string NameTable { get; private set; }
+
+        public string Command
+        {
+            get
+            {
+                return EditorTableControl.CreateCommand();
+            }
+        }
+
         public TableForm()
         {
             InitializeComponent();
+        }
+
+        public TableForm(string nameTable)
+        {
+            InitializeComponent();
+
+            NameTable = nameTable;
         }
     }
 }

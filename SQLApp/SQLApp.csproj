@@ -78,17 +78,11 @@
     <Compile Include="View\Controls\ConnectionListControl.Designer.cs">
       <DependentUpon>ConnectionListControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Controls\CreateTableControl.cs">
+    <Compile Include="View\Controls\EditorTableControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\Controls\CreateTableControl.Designer.cs">
-      <DependentUpon>CreateTableControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Controls\DropTableControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\Controls\DropTableControl.Designer.cs">
-      <DependentUpon>DropTableControl.cs</DependentUpon>
+    <Compile Include="View\Controls\EditorTableControl.Designer.cs">
+      <DependentUpon>EditorTableControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Controls\EditorConnectionControl.cs">
       <SubType>UserControl</SubType>
@@ -96,17 +90,11 @@
     <Compile Include="View\Controls\EditorConnectionControl.Designer.cs">
       <DependentUpon>EditorConnectionControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Controls\EditTableControl.cs">
+    <Compile Include="View\Controls\EditorValueOfTableControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\Controls\EditTableControl.Designer.cs">
-      <DependentUpon>EditTableControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Controls\SelectTableContol.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\Controls\SelectTableContol.Designer.cs">
-      <DependentUpon>SelectTableContol.cs</DependentUpon>
+    <Compile Include="View\Controls\EditorValueOfTableControl.Designer.cs">
+      <DependentUpon>EditorValueOfTableControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Controls\TableListControl.cs">
       <SubType>UserControl</SubType>
@@ -141,20 +129,14 @@
     <EmbeddedResource Include="View\Controls\ConnectionListControl.resx">
       <DependentUpon>ConnectionListControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Controls\CreateTableControl.resx">
-      <DependentUpon>CreateTableControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Controls\DropTableControl.resx">
-      <DependentUpon>DropTableControl.cs</DependentUpon>
+    <EmbeddedResource Include="View\Controls\EditorTableControl.resx">
+      <DependentUpon>EditorTableControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\EditorConnectionControl.resx">
       <DependentUpon>EditorConnectionControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Controls\EditTableControl.resx">
-      <DependentUpon>EditTableControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Controls\SelectTableContol.resx">
-      <DependentUpon>SelectTableContol.cs</DependentUpon>
+    <EmbeddedResource Include="View\Controls\EditorValueOfTableControl.resx">
+      <DependentUpon>EditorValueOfTableControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\TableListControl.resx">
       <DependentUpon>TableListControl.cs</DependentUpon>

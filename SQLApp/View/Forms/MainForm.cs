@@ -26,7 +26,7 @@ namespace SQLApp.View.Forms
 
         private void ConnectionListControl_ConnectionBuilderChanged(object sender, EventArgs e)
         {
-            CommandControl.ConnectionBuilder = ConnectionListControl.CurrentConnectionBuilder;
+            CommandControl.ConnectionBuilder = TableListControl.ConnectionBuilder = ConnectionListControl.SelectedConnectionBuilder;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -50,6 +50,18 @@ namespace SQLApp.View.Forms
             try
             {
                 FileManager.Save(ConnectionListControl.ConnectionBuilderList, _filePath);
+            }
+            catch (Exception ex)
+            {
+                MessageBoxManager.ShowError(ex.Message);
+            }
+        }
+
+        private void TableListControl_SelectedNameTableChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                EditorValueOfTableControl.DataTable = SqlManager.ExecuteDataAdapter(TableListControl.ConnectionBuilder, "SELECT * FROM " + TableListControl.SelectedNameTable + ";").Tables[0];
             }
             catch (Exception ex)
             {

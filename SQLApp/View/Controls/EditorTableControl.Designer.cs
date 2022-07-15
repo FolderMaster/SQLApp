@@ -1,6 +1,6 @@
 ﻿namespace SQLApp.View.Controls
 {
-    partial class CreateTableControl
+    partial class EditorTableControl
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.Label = new System.Windows.Forms.Label();
-            this.Button = new System.Windows.Forms.Button();
             this.TextBox = new System.Windows.Forms.TextBox();
             this.DataGridView = new System.Windows.Forms.DataGridView();
             this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,24 +48,13 @@
             this.Label.TabIndex = 6;
             this.Label.Text = "Name:";
             // 
-            // Button
-            // 
-            this.Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Button.Location = new System.Drawing.Point(368, 194);
-            this.Button.Name = "Button";
-            this.Button.Size = new System.Drawing.Size(75, 23);
-            this.Button.TabIndex = 5;
-            this.Button.Text = "Create";
-            this.Button.UseVisualStyleBackColor = true;
-            this.Button.Click += new System.EventHandler(this.Button_Click);
-            // 
             // TextBox
             // 
             this.TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TextBox.Location = new System.Drawing.Point(43, 196);
             this.TextBox.Name = "TextBox";
-            this.TextBox.Size = new System.Drawing.Size(319, 20);
+            this.TextBox.Size = new System.Drawing.Size(400, 20);
             this.TextBox.TabIndex = 4;
             // 
             // DataGridView
@@ -105,15 +93,14 @@
             this.DefaultColumn.HeaderText = "Default";
             this.DefaultColumn.Name = "DefaultColumn";
             // 
-            // CreateTableControl
+            // EditorTableControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.DataGridView);
             this.Controls.Add(this.Label);
-            this.Controls.Add(this.Button);
             this.Controls.Add(this.TextBox);
-            this.Name = "CreateTableControl";
+            this.Name = "EditorTableControl";
             this.Size = new System.Drawing.Size(443, 216);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).EndInit();
             this.ResumeLayout(false);
@@ -124,7 +111,6 @@
         #endregion
 
         private System.Windows.Forms.Label Label;
-        private System.Windows.Forms.Button Button;
         private System.Windows.Forms.TextBox TextBox;
         private System.Windows.Forms.DataGridView DataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameColumn;
