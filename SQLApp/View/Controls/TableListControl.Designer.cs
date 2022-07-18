@@ -41,7 +41,7 @@
             this.Label.Location = new System.Drawing.Point(-3, 5);
             this.Label.Name = "Label";
             this.Label.Size = new System.Drawing.Size(37, 13);
-            this.Label.TabIndex = 9;
+            this.Label.TabIndex = 0;
             this.Label.Text = "Table:";
             // 
             // EditButton
@@ -50,7 +50,7 @@
             this.EditButton.Location = new System.Drawing.Point(286, 0);
             this.EditButton.Name = "EditButton";
             this.EditButton.Size = new System.Drawing.Size(75, 23);
-            this.EditButton.TabIndex = 8;
+            this.EditButton.TabIndex = 3;
             this.EditButton.Text = "Edit";
             this.EditButton.UseVisualStyleBackColor = true;
             this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
@@ -61,7 +61,7 @@
             this.DeleteButton.Location = new System.Drawing.Point(367, 0);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(75, 23);
-            this.DeleteButton.TabIndex = 7;
+            this.DeleteButton.TabIndex = 4;
             this.DeleteButton.Text = "Delete";
             this.DeleteButton.UseVisualStyleBackColor = true;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
@@ -72,7 +72,7 @@
             this.CreateButton.Location = new System.Drawing.Point(205, 0);
             this.CreateButton.Name = "CreateButton";
             this.CreateButton.Size = new System.Drawing.Size(75, 23);
-            this.CreateButton.TabIndex = 6;
+            this.CreateButton.TabIndex = 2;
             this.CreateButton.Text = "Create";
             this.CreateButton.UseVisualStyleBackColor = true;
             this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
@@ -85,7 +85,7 @@
             this.ComboBox.Location = new System.Drawing.Point(40, 2);
             this.ComboBox.Name = "ComboBox";
             this.ComboBox.Size = new System.Drawing.Size(159, 21);
-            this.ComboBox.TabIndex = 5;
+            this.ComboBox.TabIndex = 1;
             this.ComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
             // 
             // TableListControl

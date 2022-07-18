@@ -34,28 +34,28 @@
             this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TypeColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.NullColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.KeyColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.DefaultColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // Label
             // 
-            this.Label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.Label.AutoSize = true;
-            this.Label.Location = new System.Drawing.Point(-1, 199);
+            this.Label.Location = new System.Drawing.Point(-3, 3);
             this.Label.Name = "Label";
             this.Label.Size = new System.Drawing.Size(38, 13);
-            this.Label.TabIndex = 6;
+            this.Label.TabIndex = 0;
             this.Label.Text = "Name:";
             // 
             // TextBox
             // 
-            this.TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TextBox.Location = new System.Drawing.Point(43, 196);
+            this.TextBox.Location = new System.Drawing.Point(41, 0);
             this.TextBox.Name = "TextBox";
-            this.TextBox.Size = new System.Drawing.Size(400, 20);
-            this.TextBox.TabIndex = 4;
+            this.TextBox.Size = new System.Drawing.Size(503, 20);
+            this.TextBox.TabIndex = 1;
             // 
             // DataGridView
             // 
@@ -67,11 +67,12 @@
             this.NameColumn,
             this.TypeColumn,
             this.NullColumn,
+            this.KeyColumn,
             this.DefaultColumn});
-            this.DataGridView.Location = new System.Drawing.Point(0, 0);
+            this.DataGridView.Location = new System.Drawing.Point(0, 26);
             this.DataGridView.Name = "DataGridView";
-            this.DataGridView.Size = new System.Drawing.Size(443, 188);
-            this.DataGridView.TabIndex = 7;
+            this.DataGridView.Size = new System.Drawing.Size(544, 190);
+            this.DataGridView.TabIndex = 2;
             // 
             // NameColumn
             // 
@@ -88,6 +89,11 @@
             this.NullColumn.HeaderText = "Null";
             this.NullColumn.Name = "NullColumn";
             // 
+            // KeyColumn
+            // 
+            this.KeyColumn.HeaderText = "Key";
+            this.KeyColumn.Name = "KeyColumn";
+            // 
             // DefaultColumn
             // 
             this.DefaultColumn.HeaderText = "Default";
@@ -101,7 +107,7 @@
             this.Controls.Add(this.Label);
             this.Controls.Add(this.TextBox);
             this.Name = "EditorTableControl";
-            this.Size = new System.Drawing.Size(443, 216);
+            this.Size = new System.Drawing.Size(544, 216);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -116,6 +122,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NameColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn TypeColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn NullColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn KeyColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn DefaultColumn;
     }
 }

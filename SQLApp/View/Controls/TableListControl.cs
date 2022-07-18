@@ -18,7 +18,7 @@ namespace SQLApp.View.Controls
     {
         private BindingSource _bindingSource = new BindingSource();
 
-        private List<string> _nameTableList = new List<string>();
+        private List<string> _tableNameList = new List<string>();
 
         private SqlConnectionStringBuilder _connectionBuilder = null;
 
@@ -36,7 +36,7 @@ namespace SQLApp.View.Controls
                 {
                     try
                     {
-                        NameTableList = SqlManager.GetSchema(_connectionBuilder).AsEnumerable().Select(s => s["TABLE_NAME"].ToString()).ToList();
+                        TableNameList = SqlManager.GetSchema(_connectionBuilder).AsEnumerable().Select(s => s["TABLE_NAME"].ToString()).ToList();
                     }
                     catch (Exception ex)
                     {
@@ -47,25 +47,25 @@ namespace SQLApp.View.Controls
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public List<string> NameTableList
+        public List<string> TableNameList
         {
             get
             {
-                return _nameTableList;
+                return _tableNameList;
             }
-            set
+            private set
             {
-                _nameTableList = value;
-                _bindingSource.DataSource = _nameTableList;
+                _tableNameList = value;
+                _bindingSource.DataSource = _tableNameList;
 
-                if (_nameTableList.Count > 0)
+                if (_tableNameList.Count > 0)
                 {
                     SelectedIndex = 0;
                 }
             }
         }
 
-        public string SelectedNameTable
+        public string SelectedTableName
         {
             get
             {
@@ -75,7 +75,7 @@ namespace SQLApp.View.Controls
                 }
                 else
                 {
-                    return NameTableList[SelectedIndex];
+                    return TableNameList[SelectedIndex];
                 }
             }
         }
@@ -100,7 +100,7 @@ namespace SQLApp.View.Controls
         {
             InitializeComponent();
 
-            _bindingSource.DataSource = NameTableList;
+            _bindingSource.DataSource = TableNameList;
             ComboBox.DataSource = _bindingSource;
         }
 
@@ -118,7 +118,7 @@ namespace SQLApp.View.Controls
                 {
                     SqlManager.ExecuteDataAdapter(ConnectionBuilder, form.Command);
 
-                    NameTableList.Add(form.NameTable);
+                    TableNameList.Add(form.TableName);
                     _bindingSource.ResetBindings(false);
                 }
                 catch (Exception ex)
@@ -132,13 +132,13 @@ namespace SQLApp.View.Controls
         {
             if (ComboBox.SelectedIndex != -1)
             {
-                TableForm form = new TableForm(SelectedNameTable);
+                TableForm form = new TableForm(SelectedTableName);
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     try
                     {
 
-                        NameTableList[SelectedIndex] = form.NameTable;
+                        TableNameList[SelectedIndex] = form.TableName;
                         _bindingSource.ResetBindings(false);
 
                         SelectedNameTableChanged?.Invoke(this, EventArgs.Empty);
@@ -157,9 +157,9 @@ namespace SQLApp.View.Controls
             {
                 try
                 {
-                    SqlManager.ExecuteDataAdapter(ConnectionBuilder, "DROP TABLE " + SelectedNameTable + ";");
+                    SqlManager.ExecuteDataAdapter(ConnectionBuilder, "DROP TABLE " + SelectedTableName + ";");
 
-                    NameTableList.RemoveAt(SelectedIndex);
+                    TableNameList.RemoveAt(SelectedIndex);
                     _bindingSource.ResetBindings(false);
 
                     SelectedNameTableChanged?.Invoke(this, EventArgs.Empty);

@@ -78,6 +78,12 @@
     <Compile Include="View\Controls\ConnectionListControl.Designer.cs">
       <DependentUpon>ConnectionListControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Controls\EditorRightsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\EditorRightsControl.Designer.cs">
+      <DependentUpon>EditorRightsControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Controls\EditorTableControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -96,11 +102,35 @@
     <Compile Include="View\Controls\EditorValueOfTableControl.Designer.cs">
       <DependentUpon>EditorValueOfTableControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Controls\TableListBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\TableListBox.Designer.cs">
+      <DependentUpon>TableListBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Controls\TableListControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="View\Controls\TableListControl.Designer.cs">
       <DependentUpon>TableListControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\TransactionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\TransactionControl.Designer.cs">
+      <DependentUpon>TransactionControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\TransactionsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\TransactionsControl.Designer.cs">
+      <DependentUpon>TransactionsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\UserListBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\UserListBox.Designer.cs">
+      <DependentUpon>UserListBox.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Forms\ConnectionForm.cs">
       <SubType>Form</SubType>
@@ -129,6 +159,9 @@
     <EmbeddedResource Include="View\Controls\ConnectionListControl.resx">
       <DependentUpon>ConnectionListControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\EditorRightsControl.resx">
+      <DependentUpon>EditorRightsControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\EditorTableControl.resx">
       <DependentUpon>EditorTableControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -138,8 +171,20 @@
     <EmbeddedResource Include="View\Controls\EditorValueOfTableControl.resx">
       <DependentUpon>EditorValueOfTableControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\TableListBox.resx">
+      <DependentUpon>TableListBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\TableListControl.resx">
       <DependentUpon>TableListControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\TransactionControl.resx">
+      <DependentUpon>TransactionControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\TransactionsControl.resx">
+      <DependentUpon>TransactionsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\UserListBox.resx">
+      <DependentUpon>UserListBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Forms\ConnectionForm.resx">
       <DependentUpon>ConnectionForm.cs</DependentUpon>

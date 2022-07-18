@@ -37,10 +37,10 @@
             // 
             this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelButton.Location = new System.Drawing.Point(387, 289);
+            this.CancelButton.Location = new System.Drawing.Point(482, 273);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 5;
+            this.CancelButton.TabIndex = 2;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
             // 
@@ -48,10 +48,10 @@
             // 
             this.OKButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.OKButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OKButton.Location = new System.Drawing.Point(12, 289);
+            this.OKButton.Location = new System.Drawing.Point(12, 273);
             this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(75, 23);
-            this.OKButton.TabIndex = 4;
+            this.OKButton.TabIndex = 1;
             this.OKButton.Text = "OK";
             this.OKButton.UseVisualStyleBackColor = true;
             // 
@@ -60,17 +60,17 @@
             this.EditorTableControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.EditorTableControl.ConnectionBuilder = null;
             this.EditorTableControl.Location = new System.Drawing.Point(12, 12);
             this.EditorTableControl.Name = "EditorTableControl";
-            this.EditorTableControl.Size = new System.Drawing.Size(450, 271);
-            this.EditorTableControl.TabIndex = 6;
+            this.EditorTableControl.NameTable = "";
+            this.EditorTableControl.Size = new System.Drawing.Size(545, 255);
+            this.EditorTableControl.TabIndex = 0;
             // 
             // TableForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(474, 324);
+            this.ClientSize = new System.Drawing.Size(569, 308);
             this.Controls.Add(this.EditorTableControl);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.OKButton);

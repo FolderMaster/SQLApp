@@ -12,7 +12,17 @@ namespace SQLApp.View.Forms
 {
     public partial class TableForm : Form
     {
-        public string NameTable { get; private set; }
+        public string TableName
+        {
+            get
+            {
+                return EditorTableControl.NameTable;
+            }
+            set
+            {
+                EditorTableControl.NameTable = value;
+            }
+        }
 
         public string Command
         {
@@ -31,7 +41,7 @@ namespace SQLApp.View.Forms
         {
             InitializeComponent();
 
-            NameTable = nameTable;
+            TableName = nameTable;
         }
     }
 }

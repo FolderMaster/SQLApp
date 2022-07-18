@@ -16,7 +16,17 @@ namespace SQLApp.View.Controls
 {
     public partial class EditorTableControl : UserControl
     {
-        public SqlConnectionStringBuilder ConnectionBuilder { get; set; } = null;
+        public string NameTable
+        {
+            get
+            {
+                return TextBox.Text;
+            }
+            set
+            {
+                TextBox.Text = value;
+            }
+        }
 
         public EditorTableControl()
         {
@@ -34,6 +44,10 @@ namespace SQLApp.View.Controls
                 if (DataGridView.Rows[n].Cells["NullColumn"].Value == null)
                 {
                     result += " NOT NULL";
+                }
+                if(DataGridView.Rows[n].Cells["NullColumn"].Value != null)
+                {
+                    result += " PRIMARY KEY";
                 }
                 if ((string)DataGridView.Rows[n].Cells["DefaultColumn"].Value != null)
                 {

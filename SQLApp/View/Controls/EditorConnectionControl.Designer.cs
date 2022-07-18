@@ -43,7 +43,7 @@
             this.UserTextBox.Location = new System.Drawing.Point(70, 26);
             this.UserTextBox.Name = "UserTextBox";
             this.UserTextBox.Size = new System.Drawing.Size(100, 20);
-            this.UserTextBox.TabIndex = 7;
+            this.UserTextBox.TabIndex = 3;
             this.UserTextBox.TextChanged += new System.EventHandler(this.UserTextBox_TextChanged);
             // 
             // PasswordTextBox
@@ -53,7 +53,7 @@
             this.PasswordTextBox.Location = new System.Drawing.Point(70, 52);
             this.PasswordTextBox.Name = "PasswordTextBox";
             this.PasswordTextBox.Size = new System.Drawing.Size(100, 20);
-            this.PasswordTextBox.TabIndex = 6;
+            this.PasswordTextBox.TabIndex = 5;
             this.PasswordTextBox.TextChanged += new System.EventHandler(this.PasswordTextBox_TextChanged);
             // 
             // DataSourceTextBox
@@ -63,7 +63,7 @@
             this.DataSourceTextBox.Location = new System.Drawing.Point(70, 0);
             this.DataSourceTextBox.Name = "DataSourceTextBox";
             this.DataSourceTextBox.Size = new System.Drawing.Size(100, 20);
-            this.DataSourceTextBox.TabIndex = 5;
+            this.DataSourceTextBox.TabIndex = 1;
             this.DataSourceTextBox.TextChanged += new System.EventHandler(this.DataSourceTextBox_TextChanged);
             // 
             // DataSourceLabel
@@ -72,7 +72,7 @@
             this.DataSourceLabel.Location = new System.Drawing.Point(-3, 3);
             this.DataSourceLabel.Name = "DataSourceLabel";
             this.DataSourceLabel.Size = new System.Drawing.Size(67, 13);
-            this.DataSourceLabel.TabIndex = 10;
+            this.DataSourceLabel.TabIndex = 0;
             this.DataSourceLabel.Text = "DataSource:";
             // 
             // PasswordLabel
@@ -81,7 +81,7 @@
             this.PasswordLabel.Location = new System.Drawing.Point(8, 55);
             this.PasswordLabel.Name = "PasswordLabel";
             this.PasswordLabel.Size = new System.Drawing.Size(56, 13);
-            this.PasswordLabel.TabIndex = 11;
+            this.PasswordLabel.TabIndex = 4;
             this.PasswordLabel.Text = "Password:";
             // 
             // UserLabel
@@ -90,10 +90,10 @@
             this.UserLabel.Location = new System.Drawing.Point(32, 29);
             this.UserLabel.Name = "UserLabel";
             this.UserLabel.Size = new System.Drawing.Size(32, 13);
-            this.UserLabel.TabIndex = 12;
+            this.UserLabel.TabIndex = 2;
             this.UserLabel.Text = "User:";
             // 
-            // ConnectionControl
+            // EditorConnectionControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -103,7 +103,7 @@
             this.Controls.Add(this.UserTextBox);
             this.Controls.Add(this.PasswordTextBox);
             this.Controls.Add(this.DataSourceTextBox);
-            this.Name = "ConnectionControl";
+            this.Name = "EditorConnectionControl";
             this.Size = new System.Drawing.Size(170, 72);
             this.ResumeLayout(false);
             this.PerformLayout();

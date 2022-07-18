@@ -120,17 +120,5 @@ namespace SQLApp.View.Controls
         {
             ConnectionBuilderChanged?.Invoke(this, EventArgs.Empty);
         }
-
-        private void CheckButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                MessageBoxManager.ShowInformation(SqlManager.ConnectionState(SelectedConnectionBuilder).ToString());
-            }
-            catch (Exception ex)
-            {
-                MessageBoxManager.ShowError(ex.Message);
-            }
-        }
     }
 }
