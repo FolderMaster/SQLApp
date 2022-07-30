@@ -16,23 +16,48 @@ namespace SQLApp.View.Controls
 {
     public partial class EditorValueOfTableControl : UserControl
     {
-        private SqlConnectionStringBuilder _connectionBuilder = null;
-
-        public DataTable DataTable
-        {
-            set
-            {
-                DataGridView.DataSource = value;
-            }
-        }
-
         public EditorValueOfTableControl()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, EventArgs e)
+        public void UpdateConnection()
         {
+            TableListControl.UpdateList();
+        }
+
+        private void TableListControl_SelectedNameTableChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DataGridView.DataSource = SqlManager.ExecuteDataAdapter("SELECT * FROM " + TableListControl.SelectedTableName + ";").Tables[0];
+            }
+            catch (Exception ex)
+            {
+                MessageBoxManager.ShowError(ex.Message);
+            }
+        }
+
+        private void SortButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataGridView.DataSource = SqlManager.ExecuteDataAdapter("SELECT * FROM " + TableListControl.SelectedTableName + " WHERE " + ";").Tables[0];
+            }
+            catch (Exception ex)
+            {
+                MessageBoxManager.ShowError(ex.Message);
+            }
+        }
+
+        private void CreateConditionButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

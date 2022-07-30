@@ -20,32 +20,6 @@ namespace SQLApp.View.Controls
 
         private List<string> _tableNameList = new List<string>();
 
-        private SqlConnectionStringBuilder _connectionBuilder = null;
-
-        public SqlConnectionStringBuilder ConnectionBuilder
-        {
-            get
-            {
-                return _connectionBuilder;
-            }
-            set
-            {
-                _connectionBuilder = value;
-
-                if (_connectionBuilder != null)
-                {
-                    try
-                    {
-                        NameTableList = SqlManager.GetSchema(_connectionBuilder).AsEnumerable().Select(s => s["TABLE_NAME"].ToString()).ToList();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBoxManager.ShowError(ex.Message);
-                    }
-                }
-            }
-        }
-
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public List<string> NameTableList
         {
@@ -80,6 +54,18 @@ namespace SQLApp.View.Controls
             InitializeComponent();
 
             ListBox.DataSource = _bindingSource;
+        }
+
+        public void UpdateList()
+        {
+            try
+            {
+                NameTableList = SqlManager.GetSchema("Tables", null).AsEnumerable().Select(s => s["TABLE_NAME"].ToString()).ToList();
+            }
+            catch(Exception ex)
+            {
+                MessageBoxManager.ShowError(ex.Message);
+            }
         }
     }
 }

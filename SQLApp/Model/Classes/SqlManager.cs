@@ -7,37 +7,43 @@ namespace SQLApp.Model.Classes
 {
     public static class SqlManager
     {
-        public static ConnectionState ConnectionState(SqlConnectionStringBuilder connectionBuilder)
-        {
-            using (SqlConnection connection = new SqlConnection(connectionBuilder.ConnectionString))
-            {
-                connection.Open();
+        static private SqlConnection _connection = new SqlConnection();
 
-                return connection.State;
+        public static ConnectionState ConnectionState
+        {
+            get
+            {
+                return _connection.State;
             }
         }
 
-        public static DataSet ExecuteDataAdapter(SqlConnectionStringBuilder connectionBuilder, string command)
+        public static void Connect(SqlConnectionStringBuilder connectionBuilder)
         {
-            using (SqlConnection connection = new SqlConnection(connectionBuilder.ConnectionString))
+            if(connectionBuilder != null)
             {
-                connection.Open();
-
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(command, connection);
-                DataSet dataSet = new DataSet();
-                dataAdapter.Fill(dataSet);
-                return dataSet;
+                _connection = new SqlConnection(connectionBuilder.ConnectionString);
+                _connection.Open();
             }
         }
 
-        public static DataTable GetSchema(SqlConnectionStringBuilder connectionBuilder)
+        public static DataSet ExecuteDataAdapter(string command)
         {
-            using (SqlConnection connection = new SqlConnection(connectionBuilder.ConnectionString))
-            {
-                connection.Open();
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(command, _connection);
+            DataSet dataSet = new DataSet();
+            dataAdapter.Fill(dataSet);
 
-                return connection.GetSchema("Tables");
-            }
+            return dataSet;
+        }
+
+        public static SqlDataReader ExecuteReader(string command)
+        {
+            SqlCommand sqlCommand = new SqlCommand(command, _connection);
+            return sqlCommand.ExecuteReader();
+        }
+
+        public static DataTable GetSchema(string collectionName, string[] restrictionValues)
+        {
+            return _connection.GetSchema(collectionName, restrictionValues);
         }
     }
 }

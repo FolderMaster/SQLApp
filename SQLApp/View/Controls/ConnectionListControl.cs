@@ -34,10 +34,7 @@ namespace SQLApp.View.Controls
                 _connectionBuilderList = value;
                 _bindingSource.DataSource = _connectionBuilderList;
 
-                if(_connectionBuilderList.Count > 0)
-                {
-                    SelectedIndex = 0;
-                }
+                ComboBox.Text = "";
             }
         }
 
@@ -66,11 +63,11 @@ namespace SQLApp.View.Controls
             {
                 ComboBox.SelectedIndex = value;
 
-                ConnectionBuilderChanged?.Invoke(this, EventArgs.Empty);
+                UpdateConnection();
             }
         }
 
-        public event EventHandler ConnectionBuilderChanged;
+        public event EventHandler ConnectionChanged;
 
         public ConnectionListControl()
         {
@@ -78,6 +75,23 @@ namespace SQLApp.View.Controls
 
             _bindingSource.DataSource = ConnectionBuilderList;
             ComboBox.DataSource = _bindingSource;
+        }
+
+        private void UpdateConnection()
+        {
+            try
+            {
+                SqlManager.Connect(SelectedConnectionBuilder);
+                if(SqlManager.ConnectionState == ConnectionState.Open)
+                {
+                    MessageBoxManager.ShowInformation("Connection open!");
+                    ConnectionChanged?.Invoke(this, EventArgs.Empty);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBoxManager.ShowError(ex.Message);
+            }
         }
 
         private void CreateButton_Click(object sender, EventArgs e)
@@ -100,7 +114,7 @@ namespace SQLApp.View.Controls
                     ConnectionBuilderList[SelectedIndex] = form.ConnectionBuilder;
                     _bindingSource.ResetBindings(false);
 
-                    ConnectionBuilderChanged?.Invoke(this, EventArgs.Empty);
+                    UpdateConnection();
                 }
             }
         }
@@ -112,13 +126,13 @@ namespace SQLApp.View.Controls
                 ConnectionBuilderList.RemoveAt(SelectedIndex);
                 _bindingSource.ResetBindings(false);
 
-                ConnectionBuilderChanged?.Invoke(this, EventArgs.Empty);
+                UpdateConnection();
             }
         }
 
         private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ConnectionBuilderChanged?.Invoke(this, EventArgs.Empty);
+            UpdateConnection();
         }
     }
 }

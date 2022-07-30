@@ -16,18 +16,15 @@ namespace SQLApp.View.Controls
 {
     public partial class EditorRightsControl : UserControl
     {
-        private SqlConnectionStringBuilder _connectionBuilder = null;
-
-        public SqlConnectionStringBuilder ConnectionBuilder
-        {
-            set
-            {
-                _connectionBuilder = UserListBox.ConnectionBuilder = TableListBox.ConnectionBuilder = value;
-            }
-        }
         public EditorRightsControl()
         {
             InitializeComponent();
+        }
+
+        public void UpdateConnection()
+        {
+            TableListBox.UpdateList();
+            UserListBox.UpdateList();
         }
 
         private void GrantButton_Click(object sender, EventArgs e)
@@ -35,7 +32,7 @@ namespace SQLApp.View.Controls
             try
             {
                 string command = "GRANT ALL ON " + string.Join(", ", TableListBox.SelectedTableNames) + " TO " + string.Join(", ", UserListBox.SelectedUsers) + ";";
-                SqlManager.ExecuteDataAdapter(_connectionBuilder, command);
+                SqlManager.ExecuteDataAdapter(command);
             }
             catch(Exception ex)
             {
@@ -48,7 +45,7 @@ namespace SQLApp.View.Controls
             try
             {
                 string command = "REVOKE ALL ON " + string.Join(", ", TableListBox.SelectedTableNames) + " TO " + string.Join(", ", UserListBox.SelectedUsers) + ";";
-                SqlManager.ExecuteDataAdapter(_connectionBuilder, command);
+                SqlManager.ExecuteDataAdapter(command);
             }
             catch (Exception ex)
             {

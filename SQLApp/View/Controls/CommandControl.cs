@@ -16,43 +16,51 @@ namespace SQLApp.View.Controls
 {
     public partial class CommandControl : UserControl
     {
-        private DataSet DataSet
-        {
-            set
-            {
-                TabControl.TabPages.Clear();
-                for (int n = 0; n < value.Tables.Count; ++n)
-                {
-                    DataGridView dataGridView = new DataGridView();
-                    dataGridView.ReadOnly = true;
-                    dataGridView.AllowUserToAddRows = false;
-                    dataGridView.DataSource = value.Tables[n];
-                    dataGridView.Dock = DockStyle.Fill;
-
-                    TabPage tabPage = new TabPage((n + 1).ToString());
-                    tabPage.Controls.Add(dataGridView);
-
-                    TabControl.TabPages.Add(tabPage);
-                }
-            }
-        }
-
-        public SqlConnectionStringBuilder ConnectionBuilder { get; set; } = null;
-
         public CommandControl()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, EventArgs e)
+        private void UpdateData(DataSet dataSet)
+        {
+            TabControl.TabPages.Clear();
+            for (int n = 0; n < dataSet.Tables.Count; ++n)
+            {
+                DataGridView dataGridView = new DataGridView();
+                dataGridView.ReadOnly = true;
+                dataGridView.AllowUserToAddRows = false;
+                dataGridView.DataSource = dataSet.Tables[n];
+                dataGridView.Dock = DockStyle.Fill;
+
+                TabPage tabPage = new TabPage((n + 1).ToString());
+                tabPage.Controls.Add(dataGridView);
+
+                TabControl.TabPages.Add(tabPage);
+            }
+        }
+
+        private void CommmandExecute()
         {
             try
             {
-                DataSet = SqlManager.ExecuteDataAdapter(ConnectionBuilder, TextBox.Text);
+                UpdateData(SqlManager.ExecuteDataAdapter(TextBox.Text));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBoxManager.ShowError(ex.Message);
+            }
+        }
+
+        private void Button_Click(object sender, EventArgs e)
+        {
+            CommmandExecute();
+        }
+
+        private void TextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                CommmandExecute();
             }
         }
     }

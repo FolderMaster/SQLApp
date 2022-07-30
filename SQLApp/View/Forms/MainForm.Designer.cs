@@ -32,13 +32,12 @@
             this.CommandTabPage = new System.Windows.Forms.TabPage();
             this.CommandControl = new SQLApp.View.Controls.CommandControl();
             this.TablesTabPage = new System.Windows.Forms.TabPage();
-            this.TableListControl = new SQLApp.View.Controls.TableListControl();
             this.EditorValueOfTableControl = new SQLApp.View.Controls.EditorValueOfTableControl();
             this.TransactionsTabPage = new System.Windows.Forms.TabPage();
-            this.RightsTabPage = new System.Windows.Forms.TabPage();
-            this.ConnectionListControl = new SQLApp.View.Controls.ConnectionListControl();
-            this.EditorRightsControl = new SQLApp.View.Controls.EditorRightsControl();
             this.TransactionsControl = new SQLApp.View.Controls.TransactionsControl();
+            this.RightsTabPage = new System.Windows.Forms.TabPage();
+            this.EditorRightsControl = new SQLApp.View.Controls.EditorRightsControl();
+            this.ConnectionListControl = new SQLApp.View.Controls.ConnectionListControl();
             this.TabControl.SuspendLayout();
             this.CommandTabPage.SuspendLayout();
             this.TablesTabPage.SuspendLayout();
@@ -74,7 +73,6 @@
             // 
             // CommandControl
             // 
-            this.CommandControl.ConnectionBuilder = null;
             this.CommandControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CommandControl.Location = new System.Drawing.Point(3, 3);
             this.CommandControl.Name = "CommandControl";
@@ -83,7 +81,6 @@
             // 
             // TablesTabPage
             // 
-            this.TablesTabPage.Controls.Add(this.TableListControl);
             this.TablesTabPage.Controls.Add(this.EditorValueOfTableControl);
             this.TablesTabPage.Location = new System.Drawing.Point(4, 22);
             this.TablesTabPage.Name = "TablesTabPage";
@@ -93,26 +90,12 @@
             this.TablesTabPage.Text = "Tables";
             this.TablesTabPage.UseVisualStyleBackColor = true;
             // 
-            // TableListControl
-            // 
-            this.TableListControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TableListControl.ConnectionBuilder = null;
-            this.TableListControl.Location = new System.Drawing.Point(6, 6);
-            this.TableListControl.Name = "TableListControl";
-            this.TableListControl.SelectedIndex = -1;
-            this.TableListControl.Size = new System.Drawing.Size(535, 23);
-            this.TableListControl.TabIndex = 0;
-            this.TableListControl.SelectedNameTableChanged += new System.EventHandler(this.TableListControl_SelectedNameTableChanged);
-            // 
             // EditorValueOfTableControl
             // 
-            this.EditorValueOfTableControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.EditorValueOfTableControl.Location = new System.Drawing.Point(6, 35);
+            this.EditorValueOfTableControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.EditorValueOfTableControl.Location = new System.Drawing.Point(3, 3);
             this.EditorValueOfTableControl.Name = "EditorValueOfTableControl";
-            this.EditorValueOfTableControl.Size = new System.Drawing.Size(535, 323);
+            this.EditorValueOfTableControl.Size = new System.Drawing.Size(541, 358);
             this.EditorValueOfTableControl.TabIndex = 1;
             // 
             // TransactionsTabPage
@@ -125,6 +108,14 @@
             this.TransactionsTabPage.Text = "Transactions";
             this.TransactionsTabPage.UseVisualStyleBackColor = true;
             // 
+            // TransactionsControl
+            // 
+            this.TransactionsControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TransactionsControl.Location = new System.Drawing.Point(0, 0);
+            this.TransactionsControl.Name = "TransactionsControl";
+            this.TransactionsControl.Size = new System.Drawing.Size(547, 364);
+            this.TransactionsControl.TabIndex = 0;
+            // 
             // RightsTabPage
             // 
             this.RightsTabPage.Controls.Add(this.EditorRightsControl);
@@ -136,6 +127,14 @@
             this.RightsTabPage.Text = "Rights";
             this.RightsTabPage.UseVisualStyleBackColor = true;
             // 
+            // EditorRightsControl
+            // 
+            this.EditorRightsControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.EditorRightsControl.Location = new System.Drawing.Point(3, 3);
+            this.EditorRightsControl.Name = "EditorRightsControl";
+            this.EditorRightsControl.Size = new System.Drawing.Size(541, 358);
+            this.EditorRightsControl.TabIndex = 0;
+            // 
             // ConnectionListControl
             // 
             this.ConnectionListControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -145,24 +144,7 @@
             this.ConnectionListControl.SelectedIndex = -1;
             this.ConnectionListControl.Size = new System.Drawing.Size(555, 24);
             this.ConnectionListControl.TabIndex = 0;
-            this.ConnectionListControl.ConnectionBuilderChanged += new System.EventHandler(this.ConnectionListControl_ConnectionBuilderChanged);
-            // 
-            // EditorRightsControl
-            // 
-            this.EditorRightsControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.EditorRightsControl.Location = new System.Drawing.Point(3, 3);
-            this.EditorRightsControl.Name = "EditorRightsControl";
-            this.EditorRightsControl.Size = new System.Drawing.Size(541, 358);
-            this.EditorRightsControl.TabIndex = 0;
-            // 
-            // TransactionsControl
-            // 
-            this.TransactionsControl.ConnectionBuilder = null;
-            this.TransactionsControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TransactionsControl.Location = new System.Drawing.Point(0, 0);
-            this.TransactionsControl.Name = "TransactionsControl";
-            this.TransactionsControl.Size = new System.Drawing.Size(547, 364);
-            this.TransactionsControl.TabIndex = 0;
+            this.ConnectionListControl.ConnectionChanged += new System.EventHandler(this.ConnectionListControl_ConnectionChanged);
             // 
             // MainForm
             // 
@@ -191,7 +173,6 @@
         private SQLApp.View.Controls.CommandControl CommandControl;
         private SQLApp.View.Controls.ConnectionListControl ConnectionListControl;
         private Controls.EditorValueOfTableControl EditorValueOfTableControl;
-        private Controls.TableListControl TableListControl;
         private System.Windows.Forms.TabPage TransactionsTabPage;
         private System.Windows.Forms.TabPage RightsTabPage;
         private Controls.EditorRightsControl EditorRightsControl;

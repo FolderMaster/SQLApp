@@ -37,7 +37,7 @@ namespace SQLApp.View.Forms
             try
             {
                 ConnectionBuilder = EditorConnectionControl.ConnectionBuilder;
-                MessageBoxManager.ShowInformation(SqlManager.ConnectionState(ConnectionBuilder).ToString());
+                MessageBoxManager.ShowInformation(SqlManager.ConnectionState.ToString());
             }
             catch(Exception ex)
             {

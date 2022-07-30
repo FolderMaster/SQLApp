@@ -20,31 +20,6 @@ namespace SQLApp.View.Controls
 
         private List<string> _userList = new List<string>();
 
-        private SqlConnectionStringBuilder _connectionBuilder = null;
-        public SqlConnectionStringBuilder ConnectionBuilder
-        {
-            get
-            {
-                return _connectionBuilder;
-            }
-            set
-            {
-                _connectionBuilder = value;
-
-                if (_connectionBuilder != null)
-                {
-                    try
-                    {
-                        UserList = SqlManager.ExecuteDataAdapter(_connectionBuilder, "Select * From Master..SysUsers Where IsSqlUser = 1").Tables[0].AsEnumerable().Select(s => s["NAME"].ToString()).ToList();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBoxManager.ShowError(ex.Message);
-                    }
-                }
-            }
-        }
-
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public List<string> UserList
         {
@@ -79,6 +54,18 @@ namespace SQLApp.View.Controls
             InitializeComponent();
 
             ListBox.DataSource = _bindingSource;
+        }
+
+        public void UpdateList()
+        {
+            try
+            {
+                UserList = SqlManager.ExecuteDataAdapter("Select * From Master..SysUsers Where IsSqlUser = 1").Tables[0].AsEnumerable().Select(s => s["NAME"].ToString()).ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBoxManager.ShowError(ex.Message);
+            }
         }
     }
 }

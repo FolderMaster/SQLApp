@@ -78,7 +78,6 @@
             // 
             this.UserListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.UserListBox.ConnectionBuilder = null;
             this.UserListBox.Location = new System.Drawing.Point(156, 16);
             this.UserListBox.Name = "UserListBox";
             this.UserListBox.Size = new System.Drawing.Size(150, 171);
@@ -88,7 +87,6 @@
             // 
             this.TableListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.TableListBox.ConnectionBuilder = null;
             this.TableListBox.Location = new System.Drawing.Point(0, 16);
             this.TableListBox.Name = "TableListBox";
             this.TableListBox.Size = new System.Drawing.Size(150, 171);

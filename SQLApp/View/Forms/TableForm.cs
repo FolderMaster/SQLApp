@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Data.SqlClient;
+
 namespace SQLApp.View.Forms
 {
     public partial class TableForm : Form
@@ -16,11 +18,7 @@ namespace SQLApp.View.Forms
         {
             get
             {
-                return EditorTableControl.NameTable;
-            }
-            set
-            {
-                EditorTableControl.NameTable = value;
+                return EditorTableControl.TableName;
             }
         }
 
@@ -28,7 +26,7 @@ namespace SQLApp.View.Forms
         {
             get
             {
-                return EditorTableControl.CreateCommand();
+                return EditorTableControl.Command;
             }
         }
 
@@ -41,7 +39,7 @@ namespace SQLApp.View.Forms
         {
             InitializeComponent();
 
-            TableName = nameTable;
+            EditorTableControl.TableName = nameTable;
         }
     }
 }

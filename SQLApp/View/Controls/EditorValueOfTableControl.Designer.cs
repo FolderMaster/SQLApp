@@ -29,7 +29,10 @@
         private void InitializeComponent()
         {
             this.DataGridView = new System.Windows.Forms.DataGridView();
-            this.Button = new System.Windows.Forms.Button();
+            this.SaveButton = new System.Windows.Forms.Button();
+            this.SortButton = new System.Windows.Forms.Button();
+            this.CreateConditionButton = new System.Windows.Forms.Button();
+            this.TableListControl = new SQLApp.View.Controls.TableListControl();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -39,31 +42,66 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridView.Location = new System.Drawing.Point(0, 0);
+            this.DataGridView.Location = new System.Drawing.Point(0, 29);
             this.DataGridView.Name = "DataGridView";
-            this.DataGridView.Size = new System.Drawing.Size(455, 236);
+            this.DataGridView.Size = new System.Drawing.Size(512, 297);
             this.DataGridView.TabIndex = 3;
             // 
-            // Button
+            // SaveButton
             // 
-            this.Button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SaveButton.Location = new System.Drawing.Point(437, 332);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(75, 23);
+            this.SaveButton.TabIndex = 5;
+            this.SaveButton.Text = "Save";
+            this.SaveButton.UseVisualStyleBackColor = true;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            // 
+            // SortButton
+            // 
+            this.SortButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.SortButton.Location = new System.Drawing.Point(0, 332);
+            this.SortButton.Name = "SortButton";
+            this.SortButton.Size = new System.Drawing.Size(75, 23);
+            this.SortButton.TabIndex = 7;
+            this.SortButton.Text = "Sort";
+            this.SortButton.UseVisualStyleBackColor = true;
+            this.SortButton.Click += new System.EventHandler(this.SortButton_Click);
+            // 
+            // CreateConditionButton
+            // 
+            this.CreateConditionButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.CreateConditionButton.Location = new System.Drawing.Point(81, 332);
+            this.CreateConditionButton.Name = "CreateConditionButton";
+            this.CreateConditionButton.Size = new System.Drawing.Size(95, 23);
+            this.CreateConditionButton.TabIndex = 8;
+            this.CreateConditionButton.Text = "Create Condition";
+            this.CreateConditionButton.UseVisualStyleBackColor = true;
+            this.CreateConditionButton.Click += new System.EventHandler(this.CreateConditionButton_Click);
+            // 
+            // TableListControl
+            // 
+            this.TableListControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Button.Location = new System.Drawing.Point(0, 242);
-            this.Button.Name = "Button";
-            this.Button.Size = new System.Drawing.Size(455, 23);
-            this.Button.TabIndex = 5;
-            this.Button.Text = "Save";
-            this.Button.UseVisualStyleBackColor = true;
-            this.Button.Click += new System.EventHandler(this.Button_Click);
+            this.TableListControl.Location = new System.Drawing.Point(0, 0);
+            this.TableListControl.Name = "TableListControl";
+            this.TableListControl.SelectedIndex = -1;
+            this.TableListControl.Size = new System.Drawing.Size(512, 23);
+            this.TableListControl.TabIndex = 6;
+            this.TableListControl.SelectedNameTableChanged += new System.EventHandler(this.TableListControl_SelectedNameTableChanged);
             // 
-            // EditTableControl
+            // EditorValueOfTableControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.Button);
+            this.Controls.Add(this.CreateConditionButton);
+            this.Controls.Add(this.SortButton);
+            this.Controls.Add(this.TableListControl);
+            this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.DataGridView);
-            this.Name = "EditTableControl";
-            this.Size = new System.Drawing.Size(455, 265);
+            this.Name = "EditorValueOfTableControl";
+            this.Size = new System.Drawing.Size(512, 355);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).EndInit();
             this.ResumeLayout(false);
 
@@ -71,6 +109,9 @@
 
         #endregion
         private System.Windows.Forms.DataGridView DataGridView;
-        private System.Windows.Forms.Button Button;
+        private System.Windows.Forms.Button SaveButton;
+        private TableListControl TableListControl;
+        private System.Windows.Forms.Button SortButton;
+        private System.Windows.Forms.Button CreateConditionButton;
     }
 }

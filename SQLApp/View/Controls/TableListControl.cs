@@ -20,32 +20,6 @@ namespace SQLApp.View.Controls
 
         private List<string> _tableNameList = new List<string>();
 
-        private SqlConnectionStringBuilder _connectionBuilder = null;
-
-        public SqlConnectionStringBuilder ConnectionBuilder
-        {
-            get
-            {
-                return _connectionBuilder;
-            }
-            set
-            {
-                _connectionBuilder = value;
-
-                if(_connectionBuilder != null)
-                {
-                    try
-                    {
-                        TableNameList = SqlManager.GetSchema(_connectionBuilder).AsEnumerable().Select(s => s["TABLE_NAME"].ToString()).ToList();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBoxManager.ShowError(ex.Message);
-                    }
-                }
-            }
-        }
-
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public List<string> TableNameList
         {
@@ -104,6 +78,18 @@ namespace SQLApp.View.Controls
             ComboBox.DataSource = _bindingSource;
         }
 
+        public void UpdateList()
+        {
+            try
+            {
+                TableNameList = SqlManager.GetSchema("Tables", null).AsEnumerable().Select(s => s["TABLE_NAME"].ToString()).ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBoxManager.ShowError(ex.Message);
+            }
+        }
+
         private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             SelectedNameTableChanged?.Invoke(this, EventArgs.Empty);
@@ -116,7 +102,7 @@ namespace SQLApp.View.Controls
             {
                 try
                 {
-                    SqlManager.ExecuteDataAdapter(ConnectionBuilder, form.Command);
+                    SqlManager.ExecuteDataAdapter(form.Command);
 
                     TableNameList.Add(form.TableName);
                     _bindingSource.ResetBindings(false);
@@ -137,6 +123,7 @@ namespace SQLApp.View.Controls
                 {
                     try
                     {
+                        SqlManager.ExecuteDataAdapter(form.Command);
 
                         TableNameList[SelectedIndex] = form.TableName;
                         _bindingSource.ResetBindings(false);
@@ -157,7 +144,7 @@ namespace SQLApp.View.Controls
             {
                 try
                 {
-                    SqlManager.ExecuteDataAdapter(ConnectionBuilder, "DROP TABLE " + SelectedTableName + ";");
+                    SqlManager.ExecuteDataAdapter("DROP TABLE " + SelectedTableName + ";");
 
                     TableNameList.RemoveAt(SelectedIndex);
                     _bindingSource.ResetBindings(false);

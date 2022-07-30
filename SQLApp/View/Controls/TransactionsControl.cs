@@ -16,8 +16,6 @@ namespace SQLApp.View.Controls
 {
     public partial class TransactionsControl : UserControl
     {
-        public SqlConnectionStringBuilder ConnectionBuilder { get; set; }
-
         public TransactionsControl()
         {
             InitializeComponent();
@@ -27,7 +25,7 @@ namespace SQLApp.View.Controls
         {
             try
             {
-                SqlManager.ExecuteDataAdapter(ConnectionBuilder, "COMMIT;");
+                SqlManager.ExecuteDataAdapter("COMMIT;");
             }
             catch(Exception ex)
             {
@@ -39,7 +37,7 @@ namespace SQLApp.View.Controls
         {
             try
             {
-                SqlManager.ExecuteDataAdapter(ConnectionBuilder, "ROLLBACK;");
+                SqlManager.ExecuteDataAdapter("ROLLBACK;");
             }
             catch (Exception ex)
             {
@@ -51,7 +49,7 @@ namespace SQLApp.View.Controls
         {
             try
             {
-                SqlManager.ExecuteDataAdapter(ConnectionBuilder, "SAVEPOINT MySavePoint;");
+                SqlManager.ExecuteDataAdapter("SAVEPOINT MySavePoint;");
             }
             catch (Exception ex)
             {

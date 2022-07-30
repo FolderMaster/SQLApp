@@ -43,6 +43,7 @@
             this.ComboBox.Location = new System.Drawing.Point(67, 2);
             this.ComboBox.Name = "ComboBox";
             this.ComboBox.Size = new System.Drawing.Size(243, 21);
+            this.ComboBox.Sorted = true;
             this.ComboBox.TabIndex = 1;
             this.ComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
             // 
