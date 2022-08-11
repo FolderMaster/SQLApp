@@ -1,6 +1,6 @@
 ﻿namespace SQLApp.View.Forms
 {
-    partial class TableForm
+    partial class SortForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,61 +28,61 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.CancelButton = new System.Windows.Forms.Button();
             this.OKButton = new System.Windows.Forms.Button();
-            this.EditorTableControl = new SQLApp.View.Controls.TableEditorControl();
+            this.CancelButton = new System.Windows.Forms.Button();
+            this.SortingControl = new SQLApp.View.Controls.SortingControl();
             this.SuspendLayout();
-            // 
-            // CancelButton
-            // 
-            this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelButton.Location = new System.Drawing.Point(482, 219);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 2;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = true;
             // 
             // OKButton
             // 
             this.OKButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.OKButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OKButton.Location = new System.Drawing.Point(12, 219);
+            this.OKButton.Location = new System.Drawing.Point(12, 180);
             this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(75, 23);
-            this.OKButton.TabIndex = 1;
+            this.OKButton.TabIndex = 0;
             this.OKButton.Text = "OK";
             this.OKButton.UseVisualStyleBackColor = true;
             // 
-            // EditorTableControl
+            // CancelButton
             // 
-            this.EditorTableControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.CancelButton.Location = new System.Drawing.Point(181, 180);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(75, 23);
+            this.CancelButton.TabIndex = 1;
+            this.CancelButton.Text = "Cancel";
+            this.CancelButton.UseVisualStyleBackColor = true;
+            // 
+            // SortingControl
+            // 
+            this.SortingControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.EditorTableControl.Location = new System.Drawing.Point(12, 12);
-            this.EditorTableControl.Name = "EditorTableControl";
-            this.EditorTableControl.Size = new System.Drawing.Size(545, 201);
-            this.EditorTableControl.TabIndex = 0;
+            this.SortingControl.Location = new System.Drawing.Point(12, 12);
+            this.SortingControl.Name = "SortingControl";
+            this.SortingControl.Size = new System.Drawing.Size(244, 162);
+            this.SortingControl.TabIndex = 2;
             // 
-            // TableForm
+            // SortForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(569, 254);
-            this.Controls.Add(this.EditorTableControl);
+            this.ClientSize = new System.Drawing.Size(268, 215);
+            this.Controls.Add(this.SortingControl);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.OKButton);
-            this.Name = "TableForm";
-            this.Text = "Table";
+            this.Name = "SortForm";
+            this.Text = "Sort";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button OKButton;
-        private Controls.TableEditorControl EditorTableControl;
+        private System.Windows.Forms.Button CancelButton;
+        private Controls.SortingControl SortingControl;
     }
 }

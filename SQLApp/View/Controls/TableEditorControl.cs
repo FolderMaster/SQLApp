@@ -14,7 +14,7 @@ using SQLApp.Model.Classes;
 
 namespace SQLApp.View.Controls
 {
-    public partial class EditorTableControl : UserControl
+    public partial class TableEditorControl : UserControl
     {
         private bool _isEditing = false;
 
@@ -32,10 +32,10 @@ namespace SQLApp.View.Controls
 
                 try
                 {
-                    foreach (DataRow row in SqlManager.GetSchema("Columns", null).Select())
+                    foreach (DataRow row in SqlManager.GetSchema("Columns", null).AsEnumerable().Where(s => s["TABLE_NAME"].ToString() == value))
                     {
                         DataGridView.Rows.Add((string)row["COLUMN_NAME"], (string)row["DATA_TYPE"], (string)row["IS_NULLABLE"] == "NO", null, row["COLUMN_DEFAULT"]);
-                        DataGridView.Rows[DataGridView.Rows.Count - 2].DefaultCellStyle.BackColor = Color.LightGray;
+                        DataGridView.Rows[DataGridView.Rows.Count - 2].DefaultCellStyle.BackColor = ColorManager.ActualColor;
                     }
                 }
                 catch(Exception ex)
@@ -104,11 +104,43 @@ namespace SQLApp.View.Controls
             }
         }
 
-        public EditorTableControl()
+        public TableEditorControl()
         {
             InitializeComponent();
 
-            ((DataGridViewComboBoxColumn)DataGridView.Columns["TypeColumn"]).DataSource = Enum.GetNames(typeof(SqlDbType)).Select((s) => s.ToLower()).ToList();
+            TypeColumn.DataSource = Enum.GetNames(typeof(SqlDbType)).Select((s) => s.ToLower()).ToList();
+        }
+
+        private void DataGridView_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            if (_isEditing)
+            {
+                if (DataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor == ColorManager.ActualColor)
+                {
+                    DataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor = ColorManager.UpdateColor;
+                    DataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = ColorManager.CurrentUpdateColor;
+                }
+                else if (DataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor == ColorManager.UpdateColor)
+                {
+                    DataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = ColorManager.CurrentUpdateColor;
+                }
+            }
+        }
+
+        private void DataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            if (_isEditing)
+            {
+                DataGridView.Rows[DataGridView.Rows.Count - 2].DefaultCellStyle.BackColor = ColorManager.AddColor;
+            }
+        }
+
+        private void DataGridView_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            if (_isEditing)
+            {
+                MessageBoxManager.ShowInformation(e.RowIndex.ToString());
+            }  
         }
     }
 }

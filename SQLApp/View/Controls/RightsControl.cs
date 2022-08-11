@@ -14,9 +14,9 @@ using SQLApp.Model.Classes;
 
 namespace SQLApp.View.Controls
 {
-    public partial class EditorRightsControl : UserControl
+    public partial class RightsControl : UserControl
     {
-        public EditorRightsControl()
+        public RightsControl()
         {
             InitializeComponent();
         }

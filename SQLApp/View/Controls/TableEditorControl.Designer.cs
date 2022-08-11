@@ -1,6 +1,6 @@
 ﻿namespace SQLApp.View.Controls
 {
-    partial class EditorTableControl
+    partial class TableEditorControl
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -73,6 +73,9 @@
             this.DataGridView.Name = "DataGridView";
             this.DataGridView.Size = new System.Drawing.Size(544, 190);
             this.DataGridView.TabIndex = 2;
+            this.DataGridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.DataGridView_CellBeginEdit);
+            this.DataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.DataGridView_RowsAdded);
+            this.DataGridView.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.DataGridView_RowsRemoved);
             // 
             // NameColumn
             // 

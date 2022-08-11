@@ -32,11 +32,11 @@
             this.CommandTabPage = new System.Windows.Forms.TabPage();
             this.CommandControl = new SQLApp.View.Controls.CommandControl();
             this.TablesTabPage = new System.Windows.Forms.TabPage();
-            this.EditorValueOfTableControl = new SQLApp.View.Controls.EditorValueOfTableControl();
+            this.EditorValueOfTableControl = new SQLApp.View.Controls.ValueEditorControl();
             this.TransactionsTabPage = new System.Windows.Forms.TabPage();
             this.TransactionsControl = new SQLApp.View.Controls.TransactionsControl();
             this.RightsTabPage = new System.Windows.Forms.TabPage();
-            this.EditorRightsControl = new SQLApp.View.Controls.EditorRightsControl();
+            this.EditorRightsControl = new SQLApp.View.Controls.RightsControl();
             this.ConnectionListControl = new SQLApp.View.Controls.ConnectionListControl();
             this.TabControl.SuspendLayout();
             this.CommandTabPage.SuspendLayout();
@@ -172,10 +172,10 @@
         private System.Windows.Forms.TabPage TablesTabPage;
         private SQLApp.View.Controls.CommandControl CommandControl;
         private SQLApp.View.Controls.ConnectionListControl ConnectionListControl;
-        private Controls.EditorValueOfTableControl EditorValueOfTableControl;
+        private Controls.ValueEditorControl EditorValueOfTableControl;
         private System.Windows.Forms.TabPage TransactionsTabPage;
         private System.Windows.Forms.TabPage RightsTabPage;
-        private Controls.EditorRightsControl EditorRightsControl;
+        private Controls.RightsControl EditorRightsControl;
         private Controls.TransactionsControl TransactionsControl;
     }
 }

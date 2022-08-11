@@ -1,6 +1,6 @@
 ﻿namespace SQLApp.View.Controls
 {
-    partial class EditorConnectionControl
+    partial class ConnectionEditorControl
     {
         /// <summary> 
         /// Обязательная переменная конструктора.

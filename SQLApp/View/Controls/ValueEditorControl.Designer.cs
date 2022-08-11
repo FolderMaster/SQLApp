@@ -1,6 +1,6 @@
 ﻿namespace SQLApp.View.Controls
 {
-    partial class EditorValueOfTableControl
+    partial class ValueEditorControl
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -31,7 +31,7 @@
             this.DataGridView = new System.Windows.Forms.DataGridView();
             this.SaveButton = new System.Windows.Forms.Button();
             this.SortButton = new System.Windows.Forms.Button();
-            this.CreateConditionButton = new System.Windows.Forms.Button();
+            this.ConditionButton = new System.Windows.Forms.Button();
             this.TableListControl = new SQLApp.View.Controls.TableListControl();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.SuspendLayout();
@@ -46,6 +46,9 @@
             this.DataGridView.Name = "DataGridView";
             this.DataGridView.Size = new System.Drawing.Size(512, 297);
             this.DataGridView.TabIndex = 3;
+            this.DataGridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.DataGridView_CellBeginEdit);
+            this.DataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.DataGridView_RowsAdded);
+            this.DataGridView.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.DataGridView_RowsRemoved);
             // 
             // SaveButton
             // 
@@ -61,7 +64,7 @@
             // SortButton
             // 
             this.SortButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.SortButton.Location = new System.Drawing.Point(0, 332);
+            this.SortButton.Location = new System.Drawing.Point(81, 332);
             this.SortButton.Name = "SortButton";
             this.SortButton.Size = new System.Drawing.Size(75, 23);
             this.SortButton.TabIndex = 7;
@@ -69,16 +72,16 @@
             this.SortButton.UseVisualStyleBackColor = true;
             this.SortButton.Click += new System.EventHandler(this.SortButton_Click);
             // 
-            // CreateConditionButton
+            // ConditionButton
             // 
-            this.CreateConditionButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.CreateConditionButton.Location = new System.Drawing.Point(81, 332);
-            this.CreateConditionButton.Name = "CreateConditionButton";
-            this.CreateConditionButton.Size = new System.Drawing.Size(95, 23);
-            this.CreateConditionButton.TabIndex = 8;
-            this.CreateConditionButton.Text = "Create Condition";
-            this.CreateConditionButton.UseVisualStyleBackColor = true;
-            this.CreateConditionButton.Click += new System.EventHandler(this.CreateConditionButton_Click);
+            this.ConditionButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ConditionButton.Location = new System.Drawing.Point(0, 332);
+            this.ConditionButton.Name = "ConditionButton";
+            this.ConditionButton.Size = new System.Drawing.Size(75, 23);
+            this.ConditionButton.TabIndex = 8;
+            this.ConditionButton.Text = "Condition";
+            this.ConditionButton.UseVisualStyleBackColor = true;
+            this.ConditionButton.Click += new System.EventHandler(this.ConditionButton_Click);
             // 
             // TableListControl
             // 
@@ -91,16 +94,16 @@
             this.TableListControl.TabIndex = 6;
             this.TableListControl.SelectedNameTableChanged += new System.EventHandler(this.TableListControl_SelectedNameTableChanged);
             // 
-            // EditorValueOfTableControl
+            // ValueEditorControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.CreateConditionButton);
+            this.Controls.Add(this.ConditionButton);
             this.Controls.Add(this.SortButton);
             this.Controls.Add(this.TableListControl);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.DataGridView);
-            this.Name = "EditorValueOfTableControl";
+            this.Name = "ValueEditorControl";
             this.Size = new System.Drawing.Size(512, 355);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).EndInit();
             this.ResumeLayout(false);
@@ -112,6 +115,6 @@
         private System.Windows.Forms.Button SaveButton;
         private TableListControl TableListControl;
         private System.Windows.Forms.Button SortButton;
-        private System.Windows.Forms.Button CreateConditionButton;
+        private System.Windows.Forms.Button ConditionButton;
     }
 }

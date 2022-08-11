@@ -64,13 +64,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Classes\Condition.cs" />
     <Compile Include="Model\Classes\FileManager.cs" />
+    <Compile Include="Model\Classes\Sorting.cs" />
     <Compile Include="Model\Classes\SqlManager.cs" />
+    <Compile Include="Model\Classes\TableEditor.cs" />
+    <Compile Include="Model\Classes\ValueEditor.cs" />
+    <Compile Include="View\ColorManager.cs" />
     <Compile Include="View\Controls\CommandControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="View\Controls\CommandControl.Designer.cs">
       <DependentUpon>CommandControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\ConditionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\ConditionControl.Designer.cs">
+      <DependentUpon>ConditionControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Controls\ConnectionListControl.cs">
       <SubType>UserControl</SubType>
@@ -78,29 +89,35 @@
     <Compile Include="View\Controls\ConnectionListControl.Designer.cs">
       <DependentUpon>ConnectionListControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Controls\EditorRightsControl.cs">
+    <Compile Include="View\Controls\RightsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\Controls\EditorRightsControl.Designer.cs">
-      <DependentUpon>EditorRightsControl.cs</DependentUpon>
+    <Compile Include="View\Controls\RightsControl.Designer.cs">
+      <DependentUpon>RightsControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Controls\EditorTableControl.cs">
+    <Compile Include="View\Controls\SortingControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\Controls\EditorTableControl.Designer.cs">
-      <DependentUpon>EditorTableControl.cs</DependentUpon>
+    <Compile Include="View\Controls\SortingControl.Designer.cs">
+      <DependentUpon>SortingControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Controls\EditorConnectionControl.cs">
+    <Compile Include="View\Controls\TableEditorControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\Controls\EditorConnectionControl.Designer.cs">
-      <DependentUpon>EditorConnectionControl.cs</DependentUpon>
+    <Compile Include="View\Controls\TableEditorControl.Designer.cs">
+      <DependentUpon>TableEditorControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Controls\EditorValueOfTableControl.cs">
+    <Compile Include="View\Controls\ConnectionEditorControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\Controls\EditorValueOfTableControl.Designer.cs">
-      <DependentUpon>EditorValueOfTableControl.cs</DependentUpon>
+    <Compile Include="View\Controls\ConnectionEditorControl.Designer.cs">
+      <DependentUpon>ConnectionEditorControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\ValueEditorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\ValueEditorControl.Designer.cs">
+      <DependentUpon>ValueEditorControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Controls\TableListBox.cs">
       <SubType>UserControl</SubType>
@@ -114,12 +131,6 @@
     <Compile Include="View\Controls\TableListControl.Designer.cs">
       <DependentUpon>TableListControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Controls\TransactionControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\Controls\TransactionControl.Designer.cs">
-      <DependentUpon>TransactionControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\Controls\TransactionsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -131,6 +142,12 @@
     </Compile>
     <Compile Include="View\Controls\UserListBox.Designer.cs">
       <DependentUpon>UserListBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Forms\ConditionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Forms\ConditionForm.Designer.cs">
+      <DependentUpon>ConditionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Forms\ConnectionForm.cs">
       <SubType>Form</SubType>
@@ -146,6 +163,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\Forms\SortForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Forms\SortForm.Designer.cs">
+      <DependentUpon>SortForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Forms\TableForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,20 +179,26 @@
     <EmbeddedResource Include="View\Controls\CommandControl.resx">
       <DependentUpon>CommandControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\ConditionControl.resx">
+      <DependentUpon>ConditionControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\ConnectionListControl.resx">
       <DependentUpon>ConnectionListControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Controls\EditorRightsControl.resx">
-      <DependentUpon>EditorRightsControl.cs</DependentUpon>
+    <EmbeddedResource Include="View\Controls\RightsControl.resx">
+      <DependentUpon>RightsControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Controls\EditorTableControl.resx">
-      <DependentUpon>EditorTableControl.cs</DependentUpon>
+    <EmbeddedResource Include="View\Controls\SortingControl.resx">
+      <DependentUpon>SortingControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Controls\EditorConnectionControl.resx">
-      <DependentUpon>EditorConnectionControl.cs</DependentUpon>
+    <EmbeddedResource Include="View\Controls\TableEditorControl.resx">
+      <DependentUpon>TableEditorControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Controls\EditorValueOfTableControl.resx">
-      <DependentUpon>EditorValueOfTableControl.cs</DependentUpon>
+    <EmbeddedResource Include="View\Controls\ConnectionEditorControl.resx">
+      <DependentUpon>ConnectionEditorControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\ValueEditorControl.resx">
+      <DependentUpon>ValueEditorControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\TableListBox.resx">
       <DependentUpon>TableListBox.cs</DependentUpon>
@@ -177,14 +206,14 @@
     <EmbeddedResource Include="View\Controls\TableListControl.resx">
       <DependentUpon>TableListControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Controls\TransactionControl.resx">
-      <DependentUpon>TransactionControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\TransactionsControl.resx">
       <DependentUpon>TransactionsControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Controls\UserListBox.resx">
       <DependentUpon>UserListBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Forms\ConditionForm.resx">
+      <DependentUpon>ConditionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Forms\ConnectionForm.resx">
       <DependentUpon>ConnectionForm.cs</DependentUpon>
@@ -201,6 +230,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\Forms\SortForm.resx">
+      <DependentUpon>SortForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Forms\TableForm.resx">
       <DependentUpon>TableForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -229,15 +261,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Example\Database.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Example\Database_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>Database.mdf</DependentUpon>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

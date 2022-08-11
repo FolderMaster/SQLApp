@@ -30,7 +30,7 @@
         {
             this.OKButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
-            this.EditorConnectionControl = new SQLApp.View.Controls.EditorConnectionControl();
+            this.EditorConnectionControl = new SQLApp.View.Controls.ConnectionEditorControl();
             this.SuspendLayout();
             // 
             // OKButton
@@ -84,7 +84,7 @@
         #endregion
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button OKButton;
-        private SQLApp.View.Controls.EditorConnectionControl EditorConnectionControl;
+        private SQLApp.View.Controls.ConnectionEditorControl EditorConnectionControl;
     }
 }
 

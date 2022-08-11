@@ -12,7 +12,7 @@ using System.Data.SqlClient;
 
 namespace SQLApp.View.Controls
 {
-    public partial class EditorConnectionControl : UserControl
+    public partial class ConnectionEditorControl : UserControl
     {
         private SqlConnectionStringBuilder _connectionBuilder = new SqlConnectionStringBuilder();
         public SqlConnectionStringBuilder ConnectionBuilder
@@ -32,7 +32,7 @@ namespace SQLApp.View.Controls
 
         public event EventHandler ConnectionBuilderChanged;
 
-        public EditorConnectionControl()
+        public ConnectionEditorControl()
         {
             InitializeComponent();
         }

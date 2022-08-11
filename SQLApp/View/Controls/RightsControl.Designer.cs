@@ -1,6 +1,6 @@
 ﻿namespace SQLApp.View.Controls
 {
-    partial class EditorRightsControl
+    partial class RightsControl
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
