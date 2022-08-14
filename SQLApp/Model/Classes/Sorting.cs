@@ -20,12 +20,18 @@ namespace SQLApp.Model.Classes
         {
             get
             {
+                string result = "";
                 List<string> strings = new List<string>();
                 for (int n = 0; n < _columns.Count; ++n)
                 {
                     strings.Add(_columns[n] + " " + _modes[n]);
                 }
-                return string.Join(", ", strings);
+                result = string.Join(", ", strings);
+                if(result.Length > 0)
+                {
+                    result = CommandManager.OrderBy + " " + result;
+                }
+                return result;
             }
         }
 

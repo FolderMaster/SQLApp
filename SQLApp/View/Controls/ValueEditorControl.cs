@@ -33,14 +33,15 @@ namespace SQLApp.View.Controls
 
         private void UpdateTable()
         {
-            string command = "SELECT * FROM " + TableListControl.SelectedTableName;
+            string command = CommandManager.SelectAll + " " + CommandManager.From
+                + " " + TableListControl.SelectedTableName;
             if (!_condition.IsEmpty)
             {
-                command += " WHERE " + _condition.String;
+                command += " " + _condition.String;
             }
             if(!_sorting.IsEmpty)
             {
-                command += " ORDER BY " + _sorting.String;
+                command += " " + _sorting.String;
             }
             command += ";";
 
@@ -99,15 +100,25 @@ namespace SQLApp.View.Controls
 
         private void DataGridView_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
-            if (DataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor == ColorManager.ActualColor)
+            DataGridViewRow row = DataGridView.Rows[e.RowIndex];
+            if (row.DefaultCellStyle.BackColor == ColorManager.ActualColor)
             {
-                DataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor = ColorManager.UpdateColor;
-                DataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = ColorManager.CurrentUpdateColor;
+                row.DefaultCellStyle.BackColor = ColorManager.UpdateColor;
+                row.Cells[e.ColumnIndex].Style.BackColor = ColorManager.CurrentUpdateColor;
             }
-            else if (DataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor == ColorManager.UpdateColor)
+            else if (row.DefaultCellStyle.BackColor == ColorManager.UpdateColor)
             {
-                DataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = ColorManager.CurrentUpdateColor;
+                row.Cells[e.ColumnIndex].Style.BackColor = ColorManager.CurrentUpdateColor;
             }
+        }
+
+        private void DataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+        }
+
+        private void DataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
         }
     }
 }

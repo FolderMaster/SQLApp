@@ -74,6 +74,8 @@
             this.DataGridView.Size = new System.Drawing.Size(544, 190);
             this.DataGridView.TabIndex = 2;
             this.DataGridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.DataGridView_CellBeginEdit);
+            this.DataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView_CellEndEdit);
+            this.DataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.DataGridView_DataError);
             this.DataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.DataGridView_RowsAdded);
             this.DataGridView.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.DataGridView_RowsRemoved);
             // 
@@ -102,14 +104,14 @@
             this.DefaultColumn.HeaderText = "Default";
             this.DefaultColumn.Name = "DefaultColumn";
             // 
-            // EditorTableControl
+            // TableEditorControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.DataGridView);
             this.Controls.Add(this.Label);
             this.Controls.Add(this.TextBox);
-            this.Name = "EditorTableControl";
+            this.Name = "TableEditorControl";
             this.Size = new System.Drawing.Size(544, 216);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).EndInit();
             this.ResumeLayout(false);

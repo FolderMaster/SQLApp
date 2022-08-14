@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SQLApp.Model.Classes
 {
-    public class ValueEditor
+    public class ValueTableEditor
     {
         public struct Row
         {

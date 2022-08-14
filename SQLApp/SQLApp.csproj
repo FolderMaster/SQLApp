@@ -64,12 +64,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Classes\Column.cs" />
+    <Compile Include="Model\Classes\CommandManager.cs" />
     <Compile Include="Model\Classes\Condition.cs" />
     <Compile Include="Model\Classes\FileManager.cs" />
     <Compile Include="Model\Classes\Sorting.cs" />
     <Compile Include="Model\Classes\SqlManager.cs" />
+    <Compile Include="Model\Classes\TableCreator.cs" />
     <Compile Include="Model\Classes\TableEditor.cs" />
-    <Compile Include="Model\Classes\ValueEditor.cs" />
+    <Compile Include="Model\Classes\Validator.cs" />
+    <Compile Include="Model\Classes\ValueTableEditor.cs" />
     <Compile Include="View\ColorManager.cs" />
     <Compile Include="View\Controls\CommandControl.cs">
       <SubType>UserControl</SubType>

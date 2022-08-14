@@ -7,7 +7,7 @@ namespace SQLApp.Model.Classes
 {
     public static class SqlManager
     {
-        static private SqlConnection _connection = new SqlConnection();
+        private static SqlConnection _connection = new SqlConnection();
 
         public static ConnectionState ConnectionState
         {

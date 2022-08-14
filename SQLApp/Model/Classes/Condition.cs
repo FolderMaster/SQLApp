@@ -1,8 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using static SQLApp.Model.Classes.Condition;
-using System.Data.Common;
 
 namespace SQLApp.Model.Classes
 {
@@ -27,7 +24,7 @@ namespace SQLApp.Model.Classes
                 {
                     if (_areNot[n])
                     {
-                        result += "NOT ";
+                        result += CommandManager.Not + " ";
                     }
                     result += _columns[n] + " " + OperationToString(_operations[n]) + " "
                         + _values[n];
@@ -35,6 +32,10 @@ namespace SQLApp.Model.Classes
                     {
                         result += " " + _conjunctions[n] + " ";
                     }
+                }
+                if(result.Length > 0)
+                {
+                    result = CommandManager.Where + " " + result;
                 }
                 return result;
             }
@@ -99,25 +100,25 @@ namespace SQLApp.Model.Classes
             switch (operation)
             {
                 case Operation.Equal:
-                    result +=  "=";
+                    result +=  CommandManager.Equal;
                     break;
                 case Operation.NotEqual:
-                    result += "<>";
+                    result += CommandManager.NotEqual;
                     break;
                 case Operation.More:
-                    result += ">";
+                    result += CommandManager.More;
                     break;
                 case Operation.MoreOrEqual:
-                    result += ">=";
+                    result += CommandManager.MoreOrEqual;
                     break;
                 case Operation.Less:
-                    result += "<";
+                    result += CommandManager.Less;
                     break;
                 case Operation.LessOrEqual:
-                    result += "<=";
+                    result += CommandManager.LessOrEqual;
                     break;
                 case Operation.Like:
-                    result += "LIKE";
+                    result += CommandManager.Like;
                     break;
             }
             return result;

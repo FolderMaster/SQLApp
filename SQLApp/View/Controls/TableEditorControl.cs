@@ -2,13 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
-using System.Data.SqlClient;
 
 using SQLApp.Model.Classes;
 
@@ -32,10 +27,15 @@ namespace SQLApp.View.Controls
 
                 try
                 {
-                    foreach (DataRow row in SqlManager.GetSchema("Columns", null).AsEnumerable().Where(s => s["TABLE_NAME"].ToString() == value))
+                    foreach (DataRow row in SqlManager.GetSchema(CommandManager.Columns, null)
+                        .AsEnumerable().Where(s => s[CommandManager.TableName].ToString() == value))
                     {
-                        DataGridView.Rows.Add((string)row["COLUMN_NAME"], (string)row["DATA_TYPE"], (string)row["IS_NULLABLE"] == "NO", null, row["COLUMN_DEFAULT"]);
-                        DataGridView.Rows[DataGridView.Rows.Count - 2].DefaultCellStyle.BackColor = ColorManager.ActualColor;
+                        DataGridView.Rows.Add((string)row[CommandManager.ColumnName],
+                            (string)row[CommandManager.DataType],
+                            (string)row[CommandManager.IsNullable] == CommandManager.No,
+                            null, row[CommandManager.ColumnDefault]);
+                        DataGridView.Rows[DataGridView.Rows.Count - 2].DefaultCellStyle.BackColor
+                            = ColorManager.ActualColor;
                     }
                 }
                 catch(Exception ex)
@@ -52,53 +52,11 @@ namespace SQLApp.View.Controls
                 string result = "";
                 if(_isEditing)
                 {
-                    result = "CREATE TABLE " + TextBox.Text + "(";
-                    for (int n = 0; n < DataGridView.Rows.Count - 1; ++n)
-                    {
-                        result += (string)DataGridView.Rows[n].Cells["NameColumn"].Value + " " + (string)DataGridView.Rows[n].Cells["TypeColumn"].Value;
-                        if (DataGridView.Rows[n].Cells["NullColumn"].Value == null)
-                        {
-                            result += " NOT NULL";
-                        }
-                        if (DataGridView.Rows[n].Cells["NullColumn"].Value != null)
-                        {
-                            result += " PRIMARY KEY";
-                        }
-                        if(!string.IsNullOrEmpty((string)DataGridView.Rows[n].Cells["DefaultColumn"].Value))
-                        {
-                            result += " DEFAULT " + (string)DataGridView.Rows[n].Cells["DefaultColumn"].Value;
-                        }
-                        if (n < DataGridView.Rows.Count - 2)
-                        {
-                            result += ",";
-                        }
-                    }
-                    result += ");";
+                    
                 }
                 else
                 {
-                    result = "CREATE TABLE " + TextBox.Text + "(";
-                    for (int n = 0; n < DataGridView.Rows.Count - 1; ++n)
-                    {
-                        result += (string)DataGridView.Rows[n].Cells["NameColumn"].Value + " " + (string)DataGridView.Rows[n].Cells["TypeColumn"].Value;
-                        if (DataGridView.Rows[n].Cells["NullColumn"].Value == null)
-                        {
-                            result += " NOT NULL";
-                        }
-                        if (DataGridView.Rows[n].Cells["NullColumn"].Value != null)
-                        {
-                            result += " PRIMARY KEY";
-                        }
-                        if (!string.IsNullOrEmpty((string)DataGridView.Rows[n].Cells["DefaultColumn"].Value))
-                        {
-                            result += " DEFAULT " + (string)DataGridView.Rows[n].Cells["DefaultColumn"].Value;
-                        }
-                        if (n < DataGridView.Rows.Count - 2)
-                        {
-                            result += ",";
-                        }
-                    }
-                    result += ");";
+
                 }
                 return result;
             }
@@ -115,14 +73,15 @@ namespace SQLApp.View.Controls
         {
             if (_isEditing)
             {
-                if (DataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor == ColorManager.ActualColor)
+                DataGridViewRow row = DataGridView.Rows[e.RowIndex];
+                if (row.DefaultCellStyle.BackColor == ColorManager.ActualColor)
                 {
-                    DataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor = ColorManager.UpdateColor;
-                    DataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = ColorManager.CurrentUpdateColor;
+                    row.DefaultCellStyle.BackColor = ColorManager.UpdateColor;
+                    row.Cells[e.ColumnIndex].Style.BackColor = ColorManager.CurrentUpdateColor;
                 }
-                else if (DataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor == ColorManager.UpdateColor)
+                else if (row.DefaultCellStyle.BackColor == ColorManager.UpdateColor)
                 {
-                    DataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = ColorManager.CurrentUpdateColor;
+                    row.Cells[e.ColumnIndex].Style.BackColor = ColorManager.CurrentUpdateColor;
                 }
             }
         }
@@ -131,7 +90,8 @@ namespace SQLApp.View.Controls
         {
             if (_isEditing)
             {
-                DataGridView.Rows[DataGridView.Rows.Count - 2].DefaultCellStyle.BackColor = ColorManager.AddColor;
+                DataGridView.Rows[DataGridView.Rows.Count - 2].DefaultCellStyle.BackColor
+                    = ColorManager.AddColor;
             }
         }
 
@@ -140,7 +100,17 @@ namespace SQLApp.View.Controls
             if (_isEditing)
             {
                 MessageBoxManager.ShowInformation(e.RowIndex.ToString());
-            }  
+            }
+        }
+
+        private void DataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void DataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
         }
     }
 }
