@@ -13,7 +13,7 @@ namespace SQLApp.Model.Classes
 
         public string TableName { get; set; }
 
-        public string String
+        public string Command
         {
             get
             {

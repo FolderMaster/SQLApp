@@ -110,7 +110,8 @@ namespace SQLApp.View.Controls
 
         private void DataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-
+            DataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor
+                = ColorManager.IncorrectColor;
         }
     }
 }

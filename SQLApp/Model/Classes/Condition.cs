@@ -15,7 +15,7 @@ namespace SQLApp.Model.Classes
 
         private List<Conjunction> _conjunctions = new List<Conjunction>();
 
-        public string String
+        public string Command
         {
             get
             {

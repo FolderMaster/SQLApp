@@ -21,6 +21,12 @@ namespace SQLApp.View.Controls
 
         private Sorting _sorting = new Sorting();
 
+        private ValueTableEditor _valueTableEditor = new ValueTableEditor();
+
+        private Row _formerRow = new Row();
+
+        private bool _isUpdating = true;
+
         public ValueEditorControl()
         {
             InitializeComponent();
@@ -37,29 +43,47 @@ namespace SQLApp.View.Controls
                 + " " + TableListControl.SelectedTableName;
             if (!_condition.IsEmpty)
             {
-                command += " " + _condition.String;
+                command += " " + _condition.Command;
             }
             if(!_sorting.IsEmpty)
             {
-                command += " " + _sorting.String;
+                command += " " + _sorting.Command;
             }
             command += ";";
 
+            _isUpdating = true;
             try
             {
                 DataGridView.DataSource = SqlManager.ExecuteDataAdapter(command).Tables[0];
-
             }
             catch (Exception ex)
             {
                 MessageBoxManager.ShowError(ex.Message);
             }
+            _isUpdating = false;
+            
+        }
+
+        private Row GetRow(DataGridViewRow dgvRow)
+        {
+            Row row = new Row();
+            foreach (DataGridViewCell cell in dgvRow.Cells)
+            {
+                if(cell.Value != null)
+                {
+                    row.Data.Add(cell.OwningColumn.Name, cell.Value.ToString());
+                }
+            }
+            return row;
         }
 
         private void TableListControl_SelectedNameTableChanged(object sender, EventArgs e)
         {
             _condition.Clear();
             _sorting.Clear();
+
+            _valueTableEditor.TableName = TableListControl.SelectedTableName;
+
             UpdateTable();
         }
 
@@ -85,40 +109,84 @@ namespace SQLApp.View.Controls
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                DataGridView.DataSource = SqlManager.ExecuteDataAdapter(_valueTableEditor.Command).Tables[0];
+            }
+            catch (Exception ex)
+            {
+                MessageBoxManager.ShowError(ex.Message);
+            }
+            UpdateTable();
         }
 
         private void DataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            DataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor = ColorManager.AddColor;
+            DataGridViewRow dgvRow = DataGridView.Rows[e.RowIndex];
+            if (_isUpdating)
+            {
+                dgvRow.DefaultCellStyle.BackColor = ColorManager.ActualColor;
+            }
         }
 
         private void DataGridView_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
-            MessageBoxManager.ShowInformation(e.RowIndex.ToString());
         }
 
         private void DataGridView_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
-            DataGridViewRow row = DataGridView.Rows[e.RowIndex];
-            if (row.DefaultCellStyle.BackColor == ColorManager.ActualColor)
+            if(!_isUpdating)
             {
-                row.DefaultCellStyle.BackColor = ColorManager.UpdateColor;
-                row.Cells[e.ColumnIndex].Style.BackColor = ColorManager.CurrentUpdateColor;
-            }
-            else if (row.DefaultCellStyle.BackColor == ColorManager.UpdateColor)
-            {
-                row.Cells[e.ColumnIndex].Style.BackColor = ColorManager.CurrentUpdateColor;
+                _formerRow = GetRow(DataGridView.Rows[e.RowIndex]);
             }
         }
 
         private void DataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+            if (!_isUpdating)
+            {
+                DataGridViewRow dgvRow = DataGridView.Rows[e.RowIndex];
+                Row modifiedRow = GetRow(dgvRow);
+
+                if (_formerRow.Data != modifiedRow.Data)
+                {
+                    _valueTableEditor.Edit(_formerRow, modifiedRow);
+
+                    if (dgvRow.DefaultCellStyle.BackColor == ColorManager.ActualColor)
+                    {
+                        dgvRow.DefaultCellStyle.BackColor = ColorManager.UpdateColor;
+                        dgvRow.Cells[e.ColumnIndex].Style.BackColor = ColorManager.CurrentUpdateColor;
+                    }
+                    else if (dgvRow.DefaultCellStyle.BackColor == ColorManager.UpdateColor)
+                    {
+                        dgvRow.Cells[e.ColumnIndex].Style.BackColor = ColorManager.CurrentUpdateColor;
+                    }
+                }
+            }
         }
 
         private void DataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
+            DataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor
+                = ColorManager.IncorrectColor;
+        }
 
+        private void DataGridView_UserAddedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            DataGridViewRow dgvRow = e.Row;
+            Row row = GetRow(dgvRow);
+
+            _valueTableEditor.Add(row);
+
+            dgvRow.DefaultCellStyle.BackColor = ColorManager.AddColor;
+        }
+
+        private void DataGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            DataGridViewRow dgvRow = e.Row;
+            Row row = GetRow(dgvRow);
+
+            _valueTableEditor.Remove(row);
         }
     }
 }

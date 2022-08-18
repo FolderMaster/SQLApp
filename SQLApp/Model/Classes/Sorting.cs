@@ -16,7 +16,7 @@ namespace SQLApp.Model.Classes
             }
         }
 
-        public string String
+        public string Command
         {
             get
             {

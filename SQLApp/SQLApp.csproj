@@ -67,7 +67,9 @@
     <Compile Include="Model\Classes\Column.cs" />
     <Compile Include="Model\Classes\CommandManager.cs" />
     <Compile Include="Model\Classes\Condition.cs" />
+    <Compile Include="Model\Classes\Editor.cs" />
     <Compile Include="Model\Classes\FileManager.cs" />
+    <Compile Include="Model\Classes\Row.cs" />
     <Compile Include="Model\Classes\Sorting.cs" />
     <Compile Include="Model\Classes\SqlManager.cs" />
     <Compile Include="Model\Classes\TableCreator.cs" />

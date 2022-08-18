@@ -10,9 +10,19 @@ namespace SQLApp.Model.Classes
     {
         public static string SelectAll { get; } = "SELECT *";
 
+        public static string Delete { get; } = "DELETE";
+
+        public static string Update { get; } = "UPDATE";
+
+        public static string InsertInto { get; } = "INSERT INTO";
+
         public static string From { get; } = "FROM";
 
         public static string Where { get; } = "WHERE";
+
+        public static string Values { get; } = "VALUES";
+
+        public static string Set { get; } = "SET";
 
         public static string OrderBy { get; } = "ORDER BY";
 
